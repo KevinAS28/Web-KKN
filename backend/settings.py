@@ -133,6 +133,9 @@ THUMBNAIL_PROCESSORS = (
 
 
 CMS_TEMPLATES = [
+
+     ('fullwidth.html', 'Fullwidth'),
+     
     # a minimal template to get started with
     ('minimal.html', 'Minimal template'),
 
@@ -151,14 +154,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Configure database using DATABASE_URL; fall back to sqlite in memory when no
 # environment variable is available, e.g. during Docker build
-DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
-DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+# DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
+# DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
