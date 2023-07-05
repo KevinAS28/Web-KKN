@@ -23,4 +23,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         port: 22
         password: ${{ secrets.PASSWORD }}
-        script: cd "/home/${USERNAME}/Dentistsmile-Health-PKM" && git pull origin main && python3 deploy.py
+        script: cd "/home/${USERNAME}/Web-KKN" && git pull origin main 
