@@ -1,0 +1,45 @@
+{% load cms_tags menu_tags sekizai_tags static i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+    {% block content %}
+
+    <h3>feature</h3>
+    {% placeholder "Feature" %}
+
+    <h3>content</h3>
+    {% placeholder "Content" %}
+
+    <h3>splashbox</h3>
+    {% placeholder "Splashbox" %}
+
+    <h3>menu</h3>
+    <ul class="nav">
+        {% show_menu 0 100 100 100 %}
+    </ul>
+
+    <footer>
+        {% static_placeholder 'footer' %}
+        Footer
+    </footer>    
+
+    {% endblock content %}
+
+
+
+
+    {% render_block "js" %}
+
+</body>
+
+</html>
