@@ -1,4 +1,5 @@
-{% extends "base.html" %}{% load cms_tags menu_tags static%}
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags static i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +12,11 @@
       href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
     />
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'ekas_files/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
     <!-- Material Design Bootstrap -->
-    <link href="{% static 'ekas_files/css/mdb.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet" />
     <!-- Your custom styles (optional) -->
-    <link href="{% static 'ekas_files/css/style.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -30,7 +31,7 @@
             target="_blank"
           >
             <img
-              src="{% static 'ekas_files/img/LogoDesaBungoantoi__sid__fMCA4gV.png' %}"
+              src="{% static 'img/LogoDesaBungoantoi__sid__fMCA4gV.png' %}"
               alt="Girl in a jacket"
               width="50px"
               height="50px"
@@ -153,6 +154,15 @@
       </nav>
     </header>
 
+    
+    {% block content %}
+    <h3>feature</h3>
+    {% placeholder "Feature" %}
+
+    <h3>content</h3>
+    {% placeholder "Content" %}
+
+
     <main class="pt-5">
       <div
         class="background-image-holder"
@@ -207,10 +217,10 @@
 
         <section>
           <div class="container mb-5">
-            <br /><br />
+            <br /><br />  
             <div class="col-div-6">
               <div class="box-1">
-                <img src="{% static 'ekas_files/img/Untitled.jpg' %}" class="b-img" />
+                <img src="{% static 'img/Untitled.jpg' %}" class="b-img" />
                 <h3 class="heading1">Travel</h3>
                 <p class="blog-heading">Beautiful Location For Travel</p>
                 <p class="text">
@@ -237,7 +247,7 @@
                   <span class="name">Manoj Singh . SEP 21, 2021</span>
                 </div>
                 <div class="col-div-6">
-                  <img src="{% static 'ekas_files/img/images1.jpg' %}" class="b-img-1" />
+                  <img src="{% static 'img/images1.jpg' %}" class="b-img-1" />
                 </div>
                 <div class="clearfix"></div>
                 <hr class="line" />
@@ -254,7 +264,7 @@
                   <span class="name">Manoj Singh . SEP 21, 2021</span>
                 </div>
                 <div class="col-div-6">
-                  <img src="{% static 'ekas_files/img/images5.jpg' %}" class="b-img-1" />
+                  <img src="{% static 'img/images5.jpg' %}" class="b-img-1" />
                 </div>
                 <div class="clearfix"></div>
                 <hr class="line" />
@@ -271,7 +281,7 @@
                   <span class="name">Manoj Singh . SEP 21, 2021</span>
                 </div>
                 <div class="col-div-6">
-                  <img src="{% static 'ekas_files/img/img2.jpg' %}" class="b-img-1" />
+                  <img src="{% static 'img/img2.jpg' %}" class="b-img-1" />
                 </div>
                 <div class="clearfix"></div>
                 <hr class="line" />
@@ -634,7 +644,7 @@
           <i class="fab fa-github mr-3"></i>
         </a>
 
-        <a href="{% static 'ekas_files/http://codepen.io/mdbootstrap/' %}" target="_blank">
+        <a href="{% static 'http://codepen.io/mdbootstrap/' %}" target="_blank">
           <i class="fab fa-codepen mr-3"></i>
         </a>
       </div>
@@ -650,13 +660,33 @@
       <!--/.Copyright-->
     </footer>
 
-    <script type="text/javascript" src="{% static 'ekas_files/js/jquery-3.4.1.min.js' %}"></script>
+
+
+    <h3>menu</h3>
+    <ul class="nav">
+        {% show_menu 0 100 100 100 %}
+    </ul>
+
+    <footer>
+        {% static_placeholder 'footer' %}
+        Footer
+    </footer>    
+
+    {% endblock content %}
+
+
+
+
+    {% render_block "js" %}
+
+
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{% static 'ekas_files/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{% static 'ekas_files/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{% static 'ekas_files/js/mdb.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
     <!-- Initializations -->
     <script type="text/javascript">
       // Animations initialization

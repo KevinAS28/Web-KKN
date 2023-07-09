@@ -148,6 +148,7 @@ CMS_TEMPLATES = [
 
     ('ekas_new.html', 'Ekas New Template'),
     ('ekas.html', 'Ekas Template'),
+    ('ekas_reconstruct.html', 'Ekas Reconstruct Template'),
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
