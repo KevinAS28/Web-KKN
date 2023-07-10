@@ -15,7 +15,7 @@ os_commands = [
 
 def unzip_static():
     if os.path.isfile('static.zip'):
-        os.system('unzip -o static.zip')
+        os.system('unzip -q -o static.zip')
 
 
 if __name__=='__main__':
