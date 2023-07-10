@@ -26,6 +26,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     'backend',
 
     # optional, but used in most projects
@@ -144,7 +145,14 @@ CMS_TEMPLATES = [
 
     # serving static files with whitenoise demo
     ('whitenoise-static-files-demo.html', 'Static File Demo'),
+<<<<<<< HEAD
     ('template_eka.html', 'Template Eka'),
+=======
+
+    ('ekas_new.html', 'Ekas New Template'),
+    ('ekas.html', 'Ekas Template'),
+    ('ekas_reconstruct.html', 'Ekas Reconstruct Template'),
+>>>>>>> 1a5ac6c6ce6be7d69e0f95558c7f183ad4036b57
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
