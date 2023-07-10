@@ -147,7 +147,6 @@ pillow==9.2.0
     #   reportlab
 pip-tools==6.8.0
     # via -r requirements.in
-psycopg2==2.8.5
     # via -r requirements.in
 pyparsing==3.0.9
     # via packaging
@@ -185,7 +184,6 @@ unidecode==1.1.2
     # via django-filer
 urllib3==1.25.11
     # via botocore
-uwsgi==2.0.19.1
     # via -r requirements.in
 webencodings==0.5.1
     # via
