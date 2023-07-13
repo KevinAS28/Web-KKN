@@ -149,6 +149,7 @@ CMS_TEMPLATES = [
     ('ekas_new.html', 'Ekas New Template'),
     ('ekas.html', 'Ekas Template'),
     ('ekas_reconstruct.html', 'Ekas Reconstruct Template'),
+    ('ekas_reconstruct_new.html', 'Ekas Reconstruct New Template'),
     ('template_eka.html', 'Template Eka'),
 ]
 

@@ -1,69 +1,804 @@
 {% extends "base.html" %}
-{% load cms_tags menu_tags sekizai_tags static i18n %}
-{% block base_css %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
-{% endblock %}
-{% block base_js %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-{% endblock %}
+{% load cms_tags menu_tags sekizai_tags %}
+{% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    {% block meta %}
+    <meta name="description" content="{% page_attribute "meta_description" %}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{% page_attribute "page_title" %}"/>
+    <meta property="og:description" content="{% page_attribute meta_description %}"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+{% endblock meta %}    
+{% block canonical_url %}
+<link rel="canonical" href="{{ request.build_absolute_uri }}"/>
+<meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+{% endblock canonical_url %}
+{% block fb_meta %}{% endblock fb_meta %}
+<title>{% block title %}{% page_attribute "page_title" %}{% endblock %}</title>
+{% block base_css %}
+<link
+rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+/>
+<!-- Bootstrap core CSS -->
+<link href="{% static 'ekas_assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+<!-- Material Design Bootstrap -->
+<link href="{% static 'ekas_assets/css/mdb.min.css' %}" rel="stylesheet" />
+<!-- Your custom styles (optional) -->
+<link href="{% static 'ekas_assets/css/style.min.css' %}" rel="stylesheet" />
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
+<link
+href="https://fonts.googleapis.com/css?family=Poppins"
+rel="stylesheet"
+/>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% page_attribute "page_title" %}</title>
-    {% render_block "css" %}
-</head>
+{% endblock %}
+{% render_block "css" %}
 
-<body>
+{% block page_head %}{% endblock %}
+  </head>
+  <body>
     {% cms_toolbar %}
-    
 
-    {% block navbar %}
-    <nav class="navbar {% block navbar_options %}navbar-expand-lg navbar-dark bg-dark{% endblock %}">
+    
+    <header>
+        {% block navbar %}
+      <nav
+        class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar"
+        style="margin: 50px;"
+      >
         <div class="container">
-            <a class="navbar-brand" href="/">{% block brand %}{% endblock %}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me    -auto mb-2 mb-lg-0">{% block menubar %}{% show_menu 0 100 0 100 'menu/menu.html' %}{% endblock %}</ul>
-                {% block searchbar %}{% endblock %}
-            </div>
+          <!-- Brand -->
+          <a class="navbar-brand waves-effect" href="index.html">
+            <img
+              src="{% static 'ekas_assets/img/LogoDesaBungoantoi__sid__fMCA4gV.png' %}"
+              alt="Girl in a jacket"
+              width="50px"
+              height="50px"
+            />
+          </a>
+
+          <!-- Collapse -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="profil-desa.html"
+                  >Profil Desa
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/docs/jquery/"
+                  target="_blank"
+                  >Pemerintahan Desa</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+                  target="_blank"
+                  >LKD</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/education/bootstrap/"
+                  target="_blank"
+                  >Data Desa</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/education/bootstrap/"
+                  target="_blank"
+                  >Peta</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/education/bootstrap/"
+                  target="_blank"
+                  >IDM</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/education/bootstrap/"
+                  target="_blank"
+                  >Galeri</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/education/bootstrap/"
+                  target="_blank"
+                  >SDGs</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="https://mdbootstrap.com/education/bootstrap/"
+                  target="_blank"
+                  >Pengajuan Surat</a
+                >
+              </li>
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a
+                  href="https://www.facebook.com/mdbootstrap"
+                  class="nav-link waves-effect"
+                  target="_blank"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="https://twitter.com/MDBootstrap"
+                  class="nav-link waves-effect"
+                  target="_blank"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="https://github.com/mdbootstrap/bootstrap-material-design"
+                  class="nav-link border border-light rounded waves-effect"
+                  target="_blank"
+                >
+                  <i class="fab fa-github mr-2"></i>MDB GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
+      {% endblock navbar %}
+    </header>
     
-    {% endblock %}
-    
-
     {% block content %}
+    
+    <main class="pt-5">
+      <div
+        class="background-image-holder"
+        style="
+          background-image: url('https://bungoantoi.desa.id/desa/themes/tema-silir-4.0/assets/images/header-bg.jpg');
+        "
+      >
+        <div class="background-dark-opacity"></div>
+        <div class="container mt-5">
+          <section
+            class="card wow fadeIn"
+            style="
+            opacity: 0.9;
+              {% comment %} background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg); {% endcomment %}
+            "
+          >
+            <!-- Content -->
+            <div class="card-body text-white text-center py-5 px-5 my-5">
+              <h1 class="mb-2">
+                <strong>{% placeholder "Pesan Selamat Datang" %}</strong>
+              </h1>
+              <h3 class="mb-5">
+                <strong>{% placeholder "Nama Desa" %}</strong>
+              </h3>
+              <p>
+                <strong>{% placeholder "Deskripsi Awal Website" %}</strong>
+              </p>
 
-    <h3>feature</h3>
-    {% placeholder "Feature" %}
+            </div>
+            <!-- Content -->
+          </section>
+        </div>
+      </div>
+      
+      <div class="container mt-5">
+        <!--Section: Jumbotron-->
 
-    <h3>content</h3>
-    {% placeholder "Content" %}
-    <h1>Tes content </h1>
+        <!--Section: Jumbotron-->
 
-    <h3>splashbox</h3>
-    {% placeholder "Splashbox" %}
+        <hr class="my-5" />
 
+        <div class="running-text">
+          <h3
+            class="running-text-header"
+            style="padding-top: 0.25rem; padding-bottom: 0.25rem"
+          >
+            <i
+              class="bi bi-megaphone-fill"
+              style="font-size: 1.125rem; line-height: 1.75rem"
+            ></i>
+            <span style="display: inline-block; margin-left: 0.25rem"
+              >Sekilas Info</span
+            >
+          </h3>
+          <!-- <marquee behavior="alternate" direction="right"
+            ><b
+              >SELAMAT DATANG DI WEB RESMI DESA BUNGO ANTOI KECAMATAN TABIR
+              SELATAN KABUPATEN MERANGIN PROVINSI JAMBI</b
+            ></marquee -->
+          <marquee
+            direction="right"
+            behavior="alternate"
+            style="margin-top: 5px"
+            >
+            {% placeholder "Pesan Bergerak" %}
+          </marquee>
 
+          <!-- <ul class="running-contehnt">
+            <li class="running-content-text">
+              
+            </li>
+          </ul> -->
+        </div>
 
-    <footer>
-        {% static_placeholder 'footer' %}
-        Footer
-    </footer>    
+        <section>
+          <div class="container mb-5">
+            <br /><br />
+            <div class="col-div-6">
+              <div class="box-1">
+                <img src="{% static 'ekas_assets/img/Untitled.jpg' %}" class="b-img" />
+                <h3 class="heading1">Travel</h3>
+                <p class="blog-heading">{% placeholder "Sub Judul Kartu" %}</p>
+                <p class="text">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the Beautiful
+                  Location For Travel
+                </p>
+                <p class="text">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </p>
+                <span class="name">Manoj Singh . SEP 21, 2021</span>
+              </div>
+            </div>
+            <div class="col-div-6" name="card_container0">
+              {% placeholder "Card Containers 0" %}
+              <div class="lr-box">
+                <div class="col-div-6">
+                  <h3 class="heading1">Food</h3>
+                  <p class="blog-heading-1">Good Food Good Health</p>
+                  <p class="text">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting
+                  </p>
+                  <span class="name">Manoj Singh . SEP 21, 2021</span>
+                </div>
+                <div class="col-div-6">
+                  <img src="{% static 'ekas_assets/img/images1.jpg' %}" class="b-img-1" />
+                </div>
+                <div class="clearfix"></div>
+                <hr class="line" />
+              </div>
 
+              <div class="lr-box">
+                <div class="col-div-6">
+                  <h3 class="heading1">Technology</h3>
+                  <p class="blog-heading-1">Looking for tech blogs</p>
+                  <p class="text">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting
+                  </p>
+                  <span class="name">Manoj Singh . SEP 21, 2021</span>
+                </div>
+                <div class="col-div-6">
+                  <img src="{% static 'ekas_assets/img/images5.jpg' %}" class="b-img-1" />
+                </div>
+                <div class="clearfix"></div>
+                <hr class="line" />
+              </div>
+
+              <div class="lr-box">
+                <div class="col-div-6">
+                  <h3 class="heading1">Food</h3>
+                  <p class="blog-heading-1">Good Food Good Health</p>
+                  <p class="text">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting
+                  </p>
+                  <span class="name">Manoj Singh . SEP 21, 2021</span>
+                </div>
+                <div class="col-div-6">
+                  <img src="{% static 'ekas_assets/img/img2.jpg' %}" class="b-img-1" />
+                </div>
+                <div class="clearfix"></div>
+                <hr class="line" />
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <!--Section: Cards-->
+        <section class="text-center">
+          <!--Grid row-->
+          <div class="row mb-4 wow fadeIn">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4">
+              <!--Card-->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <div
+                    class="embed-responsive embed-responsive-16by9 rounded-top"
+                  >
+                    <iframe
+                      class="embed-responsive-item"
+                      src="https://www.youtube.com/embed/cXTThxoywNQ"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h4 class="card-title">MDB Quick Start</h4>
+                  <!--Text-->
+                  <p class="card-text">
+                    Get started with MDBootstrap, the world's most popular
+                    Material Design framework for building responsive,
+                    mobile-first sites.
+                  </p>
+                  <p class="card-text">
+                    <strong
+                      >5 minutes, a few clicks and... done. You will be
+                      surprised at how easy it is.</strong
+                    >
+                  </p>
+                </div>
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <!--Card-->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img src="{% static 'ekas_assets/img/konten1.jpg' %}" class="card-img-top" alt="" />
+                  <a
+                    href="https://mdbootstrap.com/education/tech-marketing/automated-app-introduction/"
+                    target="_blank"
+                  >
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h5 class="card-title">
+                    <b
+                      >Pemdes Bungo Antoi Sukses Melaksanakan Musdes RKPDesa
+                      Tahun Anggaran 2023</b
+                    >
+                  </h5>
+                  <h6 class="mb-2">
+                    <i class="bi bi-calendar" style="font-size: 10px"></i>
+                    <span style="font-size: 12px">15 Desember 2022</span>
+                  </h6>
+                  <!--Text-->
+                  <p class="card-text">
+                    Pemerintah Desa Bungo Antoi Kecamatan Tabir Selatan ,
+                    Kabupaten Merangin, bersama BPD menggelar Musyawarah Desa
+                    (Musdes) Penyusunan Rencana Kerja Pemerintah...
+                  </p>
+                  <a
+                    href="https://mdbootstrap.com/education/tech-marketing/automated-app-introduction/"
+                    target="_blank"
+                    class="btn btn-primary btn-md"
+                    >Selengkapnya
+                    <i class="fas fa-play ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <!--Card-->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img src="{% static 'ekas_assets/img/konten2.jpg' %}" class="card-img-top" alt="" />
+                  <a
+                    href="https://mdbootstrap.com/education/tech-marketing/web-push-introduction/"
+                    target="_blank"
+                  >
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h5 class="card-title">
+                    <b
+                      >Cek Fisik Dana Desa Bungo Antoi Tahun 2021 Tim
+                      Inspektorat Merangin Turun ke Lapangan</b
+                    >
+                  </h5>
+                  <h6 class="mb-2">
+                    <i class="bi bi-calendar" style="font-size: 10px"></i>
+                    <span style="font-size: 12px">15 Desember 2022</span>
+                  </h6>
+                  <!--Text-->
+                  <p class="card-text">
+                    Pemerintah Desa Bungo Antoi Kecamatan Tabir Selatan ,
+                    Kabupaten Merangin, bersama BPD menggelar Musyawarah Desa
+                    (Musdes) Penyusunan Rencana Kerja Pemerintah...
+                  </p>
+                  <a
+                    href="https://mdbootstrap.com/education/tech-marketing/automated-app-introduction/"
+                    target="_blank"
+                    class="btn btn-primary btn-md"
+                    >Selengkapnya
+                    <i class="fas fa-play ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+
+          <!--Grid row-->
+          <div class="row mb-4 wow fadeIn">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4">
+              <!--Card-->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img src="{% static 'ekas_assets/img/konten1.jpg' %}" class="card-img-top" alt="" />
+                  <a href="https://mdbootstrap.com/angular/" target="_blank">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h5 class="card-title">
+                    <b>Monitoring Kegiatan APBDesa Bungo Antoi Tahun 2022</b>
+                  </h5>
+                  <h6 class="mb-2">
+                    <i class="bi bi-calendar" style="font-size: 10px"></i>
+                    <span style="font-size: 12px">15 Desember 2022</span>
+                  </h6>
+                  <!--Text-->
+                  <p class="card-text">
+                    Tim Monev Kecamatan Tabir Selatan yang terdiri dari Staf
+                    Kecamatan, Pendamping Desa dan Pendamping Lokal Desa
+                    mengadakan Monitoring dan evaluasi (monev)... Selengkapnya
+                  </p>
+                  <a
+                    href="https://mdbootstrap.com/angular/"
+                    target="_blank"
+                    class="btn btn-primary btn-md"
+                    >Selengkapnys
+                    <i class="fas fa-download ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <!--Card-->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img src="{% static 'ekas_assets/img/konten5.jpg' %}" class="card-img-top" alt="" />
+                  <a href="https://mdbootstrap.com/react/" target="_blank">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h4 class="card-title">
+                    <b
+                      >Pemerintah Desa Bungo Antoi Sukses Menggelar Musyawarah
+                      Penetapan RPJMDesa Tahun 2022-2028</b
+                    >
+                  </h4>
+                  <h6 class="mb-2">
+                    <i class="bi bi-calendar" style="font-size: 10px"></i>
+                    <span style="font-size: 12px">15 Desember 2022</span>
+                  </h6>
+                  <!--Text-->
+                  <p class="card-text">
+                    Pemerintah Desa Bungo Antoi mengadakan Musyawarah Desa yaitu
+                    Penetapan RPJMDesa Tahun 2022-2028. Penetapan RPJMdesa
+                    berlangsung di Balai Pertemuan... Selengkapnya
+                  </p>
+                  <a
+                    href="https://mdbootstrap.com/react/"
+                    target="_blank"
+                    class="btn btn-primary btn-md"
+                    >Selengkapnya
+                    <i class="fas fa-download ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <!--Card-->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img src="{% static 'ekas_assets/img/konten6.jpg' %}" class="card-img-top" alt="" />
+                  <a href="https://mdbootstrap.com/vue/" target="_blank">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h4 class="card-title"><b>Pelatihan Linmas Tahun 2022</b></h4>
+                  <h6 class="mb-2">
+                    <i class="bi bi-calendar" style="font-size: 10px"></i>
+                    <span style="font-size: 12px">15 Desember 2022</span>
+                  </h6>
+                  <!--Text-->
+                  <p class="card-text">
+                    Pemerintah Desa Bungo Antoi Melaksanakan kegiatan Pelatihan
+                    Linmas untuk menjadikan wilayah desa yang aman, nyaman dan
+                    tentram. Kepala Desa Bungo Antoi... Selengkapnya
+                  </p>
+                  <a
+                    href="https://mdbootstrap.com/vue/"
+                    target="_blank"
+                    class="btn btn-primary btn-md"
+                    >Selengkapnya
+                    <i class="fas fa-download ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+
+          <!--Pagination-->
+          <nav class="d-flex justify-content-center wow fadeIn">
+            <ul class="pagination pg-blue">
+              <!--Arrow left-->
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+
+              <li class="page-item active">
+                <a class="page-link" href="#"
+                  >1
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">5</a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!--Pagination-->
+        </section>
+        <!--Section: Cards-->
+      </div>
+    </main>
     {% endblock content %}
 
+    <footer
+      class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn"
+    >
+      <hr class="my-4" />
+      <div class="footer-inner">
+        <div class="footer-widget">
+          <div class="footer-column">
+            <div class="footer-brand">
+              <img
+                loading="lazy"
+                src="https://bungoantoi.desa.id/desa/logo/LogoDesaBungoantoi__sid__fMCA4gV.png"
+                alt="Logo Desa Bungo Antoi"
+                class="footer-brand-image"
+              />
+              <p class="footer-brand-caption">Desa Bandar Agung</p>
+            </div>
+            <p class="footer-info">
+              Website Resmi Pemerintah Desa Bandar Agung, Kecamatan Pendopo,
+              Kabupaten Empat Lawang
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="hub-icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+                ></path>
+              </svg>
+              Hubungi Kami
+            </h3>
+            <p class="footer-info">
+              Badan Penyuluhan Pertanian, Desa Bandar Agung, Pendopo, Empat
+              Lawang, 31593
+            </p>
+            <ul class="footer-contact">
+              <li class="footer-contact-item">
+                <i class="bi bi-telephone mr-2"></i
+                ><span>Telepon/Fax: 081379856912</span>
+              </li>
+              <li class="footer-contact-item">
+                <i class="bi bi-envelope-at-fill mr-2"></i
+                ><span>Email: bandaragung@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading items-center flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="hub-icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+                ></path>
+              </svg>
+              Album Galeri
+            </h3>
+            <div class="footer-album">
+              <a
+                href="https://bungoantoi.desa.id/first/sub_gallery/36"
+                class="footer-album-item"
+              >
+                <img
+                  loading="lazy"
+                  src="https://bungoantoi.desa.id/desa/upload/galeri/kecil_N16Qdx_HUT+RI+ke-77+2022+Desa+Bungo+Antoi.jpg"
+                  alt="HUT RI Ke-77 Tahun 2022"
+                  title="HUT RI Ke-77 Tahun 2022"
+                  class="footer-album-image"
+                />
+              </a>
+              <a
+                href="https://bungoantoi.desa.id/first/sub_gallery/41"
+                class="footer-album-item"
+              >
+                <img
+                  loading="lazy"
+                  src="https://bungoantoi.desa.id/desa/upload/galeri/kecil_J9jbwg_WhatsApp+Image+2022-10-27+s7.32.jpeg"
+                  alt="Dokumentasi Apel Pagi di Kantor Desa"
+                  title="Dokumentasi Apel Pagi di Kantor Desa"
+                  class="footer-album-image"
+                />
+              </a>
+              <a
+                href="https://bungoantoi.desa.id/first/sub_gallery/45"
+                class="footer-album-item"
+              >
+                <img
+                  loading="lazy"
+                  src="https://bungoantoi.desa.id/desa/upload/galeri/kecil_gPVKDZ_IMG_20220526_120241_706.jpg"
+                  alt="SerahTerima Jabatan Kepala Desa "
+                  title="SerahTerima Jabatan Kepala Desa "
+                  class="footer-album-image"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!--Copyright-->
+      <div class="footer-copyright py-3 mt-5">
+        © 2023 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank">
+          Bandar Agung
+        </a>
+      </div>
+      <!--/.Copyright-->
+    </footer>
 
-
+    <script type="text/javascript" src="{% static 'ekas_assets/js/jquery-3.4.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'ekas_assets/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'ekas_assets/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'ekas_assets/js/mdb.min.js' %}"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+    </script>
     {% render_block "js" %}
-
-</body>
-
+  </body>
 </html>
