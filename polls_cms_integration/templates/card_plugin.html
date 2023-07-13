@@ -1,0 +1,11 @@
+{% load cms_tags %}
+
+<div class="card">
+    <h1>Hello<h1/>
+    
+    <div class="card-body">
+        <h5 class="card-title">{{ instance.title1 }}</h5>
+        <p class="card-text">{{ instance.text }}</p>
+        <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="card-img-top">
+    </div>
+</div>
