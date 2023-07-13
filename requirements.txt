@@ -199,3 +199,4 @@ whitenoise==5.2.0
 # pip
 # setuptools
 django-extensions
+git+http://git@github.com/divio/django-polls.git#egg=polls
