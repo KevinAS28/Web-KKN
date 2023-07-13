@@ -26,6 +26,10 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Application definition
 
 INSTALLED_APPS = [
+    'mypoll',
+    'polls',
+    'polls_cms_integration',
+    
     'django_extensions',
     'backend',
 
@@ -224,17 +228,18 @@ STATICFILES_DIRS = [
 # DEFAULT_FILE_STORAGE is configured using DEFAULT_STORAGE_DSN
 
 # read the setting value from the environment variable
-DEFAULT_STORAGE_DSN = os.environ.get('DEFAULT_STORAGE_DSN')
+# DEFAULT_STORAGE_DSN = os.environ.get('DEFAULT_STORAGE_DSN')
 
 # dsn_configured_storage_class() requires the name of the setting
-DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
+# DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
 
 # Django's DEFAULT_FILE_STORAGE requires the class name
-DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
+# DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
 
 # only required for local file storage and serving, in development
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join('/data/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
 
 
 SITE_ID = 1
+MAX_UPLOAD_SIZE = "524288000"
