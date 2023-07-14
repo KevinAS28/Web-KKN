@@ -150,11 +150,9 @@ CMS_TEMPLATES = [
     # serving static files with whitenoise demo
     ('whitenoise-static-files-demo.html', 'Static File Demo'),
 
-    ('ekas_new.html', 'Ekas New Template'),
-    ('ekas.html', 'Ekas Template'),
-    ('ekas_reconstruct.html', 'Ekas Reconstruct Template'),
-    ('ekas_reconstruct_new.html', 'Ekas Reconstruct New Template'),
-    ('template_eka.html', 'Template Eka'),
+    ('home_page.html', 'Home Page'),
+    ('gallery.html', 'Gallery Page'),
+    
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'

@@ -10,7 +10,7 @@ class PollPluginPublisher(CMSPluginBase):
     module = _("Polls")
     name = _("Poll Plugin")  # name of the plugin in the interface
     render_template = "polls_cms_integration/poll_plugin.html"
-
+    
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
@@ -18,10 +18,10 @@ class PollPluginPublisher(CMSPluginBase):
 
 
 @plugin_pool.register_plugin  # register the plugin
-class CardImagePlugin(CMSPluginBase):
-    model = mypoll_models.ACardPlugin
+class HomeCardImagePlugin(CMSPluginBase):
+    model = mypoll_models.HomeCardImagePlugin
     module = _("Polls")
-    name = _("ACardImage Plugin")
+    name = _("Custom Home Card Image Plugin")
     render_template = "card_plugin.html"
     cache = False
 
@@ -31,3 +31,37 @@ class CardImagePlugin(CMSPluginBase):
             
         })
         return context
+
+@plugin_pool.register_plugin  # register the plugin
+class CardImagePlugin(CMSPluginBase):
+    model = mypoll_models.HomeCardImagePlugin
+    module = _("Polls")
+    name = _("Custom Card Image Plugin")
+    render_template = "card_plugin.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+
+@plugin_pool.register_plugin  # register the plugin
+class CardRowPlugin(CMSPluginBase):
+    # model = mypoll_models.ACardPlugin
+    module = _("Polls")
+    name = _("Custom Card Rows Plugin")
+    render_template = "home_card_row.html"
+    cache = False
+    allow_children = True
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+

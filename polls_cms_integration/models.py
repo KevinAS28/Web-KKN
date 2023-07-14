@@ -13,7 +13,9 @@ class ACardPluginModel(models.Model):
     # text = models.TextField()
     # image = models.ImageField(upload_to='images/')   
 
-class ACardPlugin(CMSPlugin):
+class HomeCardImagePlugin(CMSPlugin):
     # title = models.ForeignKey(PollPluginModel, on_delete=models.CASCADE)
-    title1 = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    tanggal = models.CharField(max_length=100)
+    description = models.CharField(max_length=5000)
     image = models.ImageField(upload_to='images/', blank=True, null=True)   
