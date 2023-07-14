@@ -151,7 +151,14 @@ CMS_TEMPLATES = [
     ('whitenoise-static-files-demo.html', 'Static File Demo'),
 
     ('home_page.html', 'Home Page'),
+
     ('gallery.html', 'Gallery Page'),
+
+    ('struktur_pemerintahan.html', 'Struktur Pemerintahan Page'),
+
+    ('data_desa.html', 'Data Desa Page  '),
+
+    ('peta_desa.html', 'Peta Desa Page  '),
     
 ]
 

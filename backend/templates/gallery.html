@@ -4,15 +4,16 @@
 
 
 {% block page_head %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}
 
 
 {% block content_main %}
       <!-- Carousel -->
-<div style="padding-bottom: 500px;">
+<div style="">
   <div id="demo" class="carousel slide" data-bs-ride="carousel"  >
 
     <!-- Indicators/dots -->
@@ -48,7 +49,6 @@
       </div>
 
     </div>
-    
     <!-- Left and right controls/icons -->
     <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -57,34 +57,17 @@
       <span class="carousel-control-next-icon"></span>
     </button>
   </div>
-
-</div>
-
-<div class="container-fluid mt-3">
-
-  <h3>{% placeholder "Bottom Text" %}</h3>
-  <p>The following example shows how to create a basic carousel with indicators and controls.</p>
 </div>
 
 <section class="gallery-block compact-gallery">
   <div class="container">
-      <div class="heading">
-          <h2>Compact Gallery</h2>
-      </div>
+      <h2>Gambar Lainnya</h2>
       <div class="row no-gutters">
-          <div class="col-md-6 col-lg-4 item zoom-on-hover">
-              <a class="lightbox" href="">
-                  {% placeholder "image 1" %}
-                  <span class="description">
-                      <span class="description-heading">Lorem Ipsum</span>
-                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                  </span>
-              </a>
-          </div>
-
+          {% placeholder "Small Gallery" %}
       </div>
   </div>
 </section>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 <script>
   baguetteBox.run('.compact-gallery', { animation: 'slideIn'});

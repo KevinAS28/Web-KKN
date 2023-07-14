@@ -65,3 +65,33 @@ class CardRowPlugin(CMSPluginBase):
         return context
 
 
+
+@plugin_pool.register_plugin  # register the plugin
+class PejabatPlugin(CMSPluginBase):
+    model = mypoll_models.PejabatCardPlugin
+    module = _("Polls")
+    name = _("Pejabat Plugin")
+    render_template = "pejabat_card.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
+class SmallGalleryPlugin(CMSPluginBase):
+    model = mypoll_models.SmallGalleryPlugin
+    module = _("Polls")
+    name = _("Small Galery")
+    render_template = "small_gallery.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
