@@ -14,12 +14,18 @@ class ACardPluginModel(models.Model):
     # text = models.TextField()
     # image = models.ImageField(upload_to='images/')   
 
-class HomeCardImagePlugin(CMSPlugin):
-    # title = models.ForeignKey(PollPluginModel, on_delete=models.CASCADE)
+class HomeCardImage(models.Model):
     title = models.CharField(max_length=100)
     tanggal = models.CharField(max_length=100)
     description = models.CharField(max_length=5000)
     image = models.ImageField(upload_to='images/', blank=True, null=True)   
+
+class HomeCardImagePlugin(CMSPlugin):
+    # home_card_image = models.ForeignKey(HomeCardImage, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=100)
+    tanggal = models.CharField(max_length=100)
+    description = models.CharField(max_length=5000)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)       
 
 class PejabatCardPlugin(CMSPlugin):
     # title = models.ForeignKey(PollPluginModel, on_delete=models.CASCADE)
@@ -34,3 +40,6 @@ class SmallGalleryPlugin(CMSPlugin):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=5000)
     image = models.ImageField(upload_to='images/', blank=True, null=True)   
+
+class PetaLivePlugin(CMSPlugin):
+    link = models.CharField(max_length=500)

@@ -6,6 +6,7 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^polls/', include('polls.urls')),
+    # re_path(r'^mypolls/', include('polls_cms_integration.urls')),
     re_path(r'^cms', include('cms.urls')),
 ]
 

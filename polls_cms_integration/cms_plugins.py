@@ -16,11 +16,10 @@ class PollPluginPublisher(CMSPluginBase):
         return context
 
 
-
 @plugin_pool.register_plugin  # register the plugin
 class HomeCardImagePlugin(CMSPluginBase):
     model = mypoll_models.HomeCardImagePlugin
-    module = _("Polls")
+    module = _("Custom")
     name = _("Custom Home Card Image Plugin")
     render_template = "card_plugin.html"
     cache = False
@@ -35,7 +34,7 @@ class HomeCardImagePlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class CardImagePlugin(CMSPluginBase):
     model = mypoll_models.HomeCardImagePlugin
-    module = _("Polls")
+    module = _("Custom")
     name = _("Custom Card Image Plugin")
     render_template = "card_plugin.html"
     cache = False
@@ -51,7 +50,7 @@ class CardImagePlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class CardRowPlugin(CMSPluginBase):
     # model = mypoll_models.ACardPlugin
-    module = _("Polls")
+    module = _("Custom")
     name = _("Custom Card Rows Plugin")
     render_template = "home_card_row.html"
     cache = False
@@ -69,7 +68,7 @@ class CardRowPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class PejabatPlugin(CMSPluginBase):
     model = mypoll_models.PejabatCardPlugin
-    module = _("Polls")
+    module = _("Custom")
     name = _("Pejabat Plugin")
     render_template = "pejabat_card.html"
     cache = False
@@ -84,9 +83,25 @@ class PejabatPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class SmallGalleryPlugin(CMSPluginBase):
     model = mypoll_models.SmallGalleryPlugin
-    module = _("Polls")
+    module = _("Custom")
     name = _("Small Galery")
     render_template = "small_gallery.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+
+@plugin_pool.register_plugin  # register the plugin
+class PetaLivePlugin(CMSPluginBase):
+    model = mypoll_models.PetaLivePlugin
+    module = _("Custom")
+    name = _("Peta Live")
+    render_template = "peta_iframe.html"
     cache = False
 
     def render(self, context, instance, placeholder):
