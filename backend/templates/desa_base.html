@@ -55,7 +55,7 @@ rel="stylesheet"
         {% block navbar %}
         <nav
         class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar"
-        {% comment %} style="margin-top:50px;" {% endcomment %}
+        {% if cms_toolbar %} style="margin-top:50px;" {% endif %}
       >
         <div class="container">
           <!-- Brand -->
