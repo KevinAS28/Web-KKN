@@ -1,0 +1,59 @@
+{% load cms_tags menu_tags sekizai_tags  %}
+
+<div class="col-lg-4 col-md-6 mb-4">
+  <!--Card-->
+  <div class="card">
+    <!--Card image-->
+    <div class="view overlay">
+      <img src="{{ instance.foto.url }}" class="card-img-top" alt="" />
+      <a
+        href="https://mdbootstrap.com/education/tech-marketing/web-push-introduction/"
+        target="_blank"
+      >
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
+    <div class="card-body">
+      <!--Title-->
+      <h5 class="card-title">
+        <b
+          >{{ instance.tingkat_jabatan }}</b
+        >
+      </h5>
+      <h6 class="card-title">
+        <b
+          >{{ instance.nama_pejabat }}</b
+        >
+      </h6>
+      
+      <h6 class="mb-2">
+        <p class="card-text">
+          Tanggal Mulai Menjabat
+        </p>        
+        <i class="bi bi-calendar" style="font-size: 10px"></i>
+
+  
+        <span style="font-size: 12px">{{ instance.tanggal_mulai_menjabat }}</span>
+      </h6>
+      <h6 class="mb-2">
+        <p class="card-text">
+          Tanggal Akhir Menjabat
+        </p>        
+        <i class="bi bi-calendar" style="font-size: 10px"></i>
+        <span style="font-size: 12px">{{ instance.tanggal_akhir_jabatan }}</span>
+      </h6>      
+      <!--Text-->
+
+      {% comment %} <a
+        href="https://mdbootstrap.com/education/tech-marketing/automated-app-introduction/"
+        target="_blank"
+        class="btn btn-primary btn-md"
+        >Selengkapnya
+        <i class="fas fa-play ml-2"></i>
+      </a> {% endcomment %}
+    </div>
+  </div>
+  <!--/.Card-->
+</div>

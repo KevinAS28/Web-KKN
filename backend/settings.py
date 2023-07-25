@@ -26,7 +26,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Application definition
 
 INSTALLED_APPS = [
-    'mypoll',
+    'profil_desa_jarakan',
     'polls',
     'polls_cms_integration',
     
@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     # the default CKEditor - optional, but used in most projects
     'djangocms_text_ckeditor',
 
-    # some content plugins - optional, but used in most projects
+    # some content plugins - optional, but used in most projects  
     'djangocms_file',
     'djangocms_icon',
     'djangocms_picture',
@@ -159,6 +159,11 @@ CMS_TEMPLATES = [
     ('data_desa.html', 'Data Desa Page  '),
 
     ('peta_desa.html', 'Peta Desa Page  '),
+
+    ('artikel.html', 'Artikel Page  '),
+
+    ('artikel-detail.html', 'Artikel Detail Page  '),
+    
     
 ]
 

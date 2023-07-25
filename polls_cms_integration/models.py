@@ -16,16 +16,17 @@ class ACardPluginModel(models.Model):
 
 class HomeCardImage(models.Model):
     title = models.CharField(max_length=100)
-    tanggal = models.CharField(max_length=100)
+    tanggal = models.DateField(default=date.today)
     description = models.CharField(max_length=5000)
     image = models.ImageField(upload_to='images/', blank=True, null=True)   
 
 class HomeCardImagePlugin(CMSPlugin):
     # home_card_image = models.ForeignKey(HomeCardImage, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100)
-    tanggal = models.CharField(max_length=100)
+    tanggal = models.DateField(default=date.today)
     description = models.CharField(max_length=5000)
     image = models.ImageField(upload_to='images/', blank=True, null=True)       
+    link_detail = models.CharField(max_length=1000)
 
 class PejabatCardPlugin(CMSPlugin):
     # title = models.ForeignKey(PollPluginModel, on_delete=models.CASCADE)

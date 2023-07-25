@@ -1,9 +1,9 @@
 from django.contrib import admin
 from polls_cms_integration import models as PollModel
 # Register your models here.
-class HomeCardImageAdmin(admin.ModelAdmin):    
-    readonly_fields = ('tanggal',)
-    extra = 3
+# class HomeCardImageAdmin(admin.ModelAdmin):    
+#     readonly_fields = ('tanggal',)
+#     extra = 3
 
 # class HomeCardImageAdmin(admin.ModelAdmin):
 #     model = PollModel.HomeCardImagePlugin
@@ -22,4 +22,4 @@ class HomeCardImageAdmin(admin.ModelAdmin):
 #     search_fields = ['question']
 
 # admin.site.register(Poll, PollAdmin)
-admin.site.register(PollModel.HomeCardImagePlugin, HomeCardImageAdmin)
+# admin.site.register(PollModel.HomeCardImagePlugin, HomeCardImageAdmin)
