@@ -2,61 +2,296 @@
 {% load cms_tags menu_tags sekizai_tags %}
 {% load static %}
 
+{% block page_head %}
+<link
+rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+/>
+<!-- Bootstrap core CSS -->
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet"
+/>
+<link
+href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+rel="stylesheet"
+/>
+<!-- Material Design Bootstrap -->
+<link href="css/mdb.min.css" rel="stylesheet" />
+<!-- Your custom styles (optional) -->
+<link href="css/style.min.css" rel="stylesheet" />
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
+<link
+href="https://fonts.googleapis.com/css?family=Poppins"
+rel="stylesheet"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
 
 {% block content_main %}
-    <div
-      
-      style=""  >
-      <div class="background-white-opacity"></div>
-      <div class="container mt-5">
-        <section
-          class="card wow fadeIn"
-          style="
-          opacity: 1.0  ;
-            {% comment %} background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg); {% endcomment %}
-          "
-        >
-          <!-- Content -->
 
-          <!-- Content -->
-        </section>
+
+  <body>
+
+
+
+    <main class="pt-5 mt-5">
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col">
+            <div class="accordion-container">
+              <div class="accordion" id="accordionExample">
+
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="false"
+                      aria-controls="collapseOne"
+                    >
+                      <i class="bi bi-person" style="margin-right: 5px"></i>
+                      <b>Peta Wilayah Batas Desa Admin</b>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample">
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOneA"
+                      aria-expanded="false"
+                      aria-controls="collapseOneA"
+                    >
+                      <h9>Gambar</h9>
+                    </div>
+
+                    <div
+                    id="collapseOneA"
+                    class="accordion-collapse collapse text-center"
+                    data-bs-parent="#collapseOne">
+                        {% placeholder 'Gambar Wilayah Batas Peta Desa' %}
+                    </div>
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOneB"
+                      aria-expanded="false"
+                      aria-controls="collapseOneB"
+                    >
+                      <h9>Maps</h9>
+                    </div>
+
+                    <div
+                    id="collapseOneB"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#collapseOne">
+                      {% placeholder "Live Map Peta Desa" %}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      <i class="bi bi-person" style="margin-right: 5px"></i>
+                      <b>Peta TPS (Tempat Pembuangan Sampah)</b>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample">
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwoA"
+                      aria-expanded="false"
+                      aria-controls="collapseTwoA"
+                    >
+                      <h9>Gambar</h9>
+                    </div>
+
+                    <div
+                    id="collapseTwoA"
+                    class="accordion-collaps collapse"
+                    data-bs-parent="#collapseTwo">
+                    {% placeholder 'Gambar Wilayah Batas Peta Desa TPS' %}
+                    </div>
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwoB"
+                      aria-expanded="false"
+                      aria-controls="collapseTwoB"
+                    >
+                      <h9>Maps</h9>
+                    </div>
+
+                    <div
+                    id="collapseTwoB"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#collapseTwo">
+                    {% placeholder "Live Map Peta Desa TPS" %}
+                    </div>
+                  </div>
+                </div>                
+
+                
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      <i class="bi bi-person" style="margin-right: 5px"></i>
+                      <b>Peta Penggunaan Lahan</b>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample">
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThreeA"
+                      aria-expanded="false"
+                      aria-controls="collapseThreeA"
+                    >
+                      <h9>Gambar</h9>
+                    </div>
+
+                    <div
+                    id="collapseThreeA"
+                    class="accordion-collaps collapse"
+                    data-bs-parent="#collapseThree">
+                    {% placeholder 'Gambar Wilayah Batas Peta Desa Penggunaan Lahan' %}
+                    </div>
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThreeB"
+                      aria-expanded="false"
+                      aria-controls="collapseThreeB"
+                    >
+                      <h9>Maps</h9>
+                    </div>
+
+                    <div
+                    id="collapseThreeB"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#collapseThree">
+                    {% placeholder "Live Map Peta Desa Penggunaan Lahan" %}
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="false"
+                      aria-controls="collapseFour"
+                    >
+                      <i class="bi bi-person" style="margin-right: 5px"></i>
+                      <b>Peta Potensi Persebaran Wisata</b>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFour"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample">
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFourA"
+                      aria-expanded="false"
+                      aria-controls="collapseFourA"
+                    >
+                      <h9>Gambar</h9>
+                    </div>
+
+                    <div
+                    id="collapseFourA"
+                    class="accordion-collaps collapse"
+                    data-bs-parent="#collapseFour">
+                    {% placeholder 'Gambar Wilayah Batas Peta Desa Persebaran Wisata' %}
+                    </div>
+                    <div
+                      class="accordion-button d-flex align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFourB"
+                      aria-expanded="false"
+                      aria-controls="collapseFourB"
+                    >
+                      <h9>Maps</h9>
+                    </div>
+
+                    <div
+                    id="collapseFourB"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#collapseFour">
+                    {% placeholder "Live Map Peta Desa Persebaran Wisata" %}
+                    </div>
+                  </div>
+                </div>                
+
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-        
-    <div class="container mt-5">
-      <!--Section: Jumbotron-->
-  
-      <!--Section: Jumbotron-->
-  
-      <hr class="my-5" />
-      
-      
-      <!--Section: Cards-->
-      <section class="text-center">
-        {% placeholder "Content" %}
-        
-        <!--Grid row-->
-        {% placeholder "Card List Row Container" %}
-        <div class="row mb-1 wow fadeIn" name="card_row">
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          {% placeholder "Card List" %}
-          
+    </main>
 
-        </div>
-          <!--Grid column-->
-  
 
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-  
-  
-        <!--Pagination-->
-      </section>
-      <!--Section: Cards-->
-    </div>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+    </script>
+  </body>
 
 {% endblock content_main %}
 

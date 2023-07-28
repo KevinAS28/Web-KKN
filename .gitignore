@@ -24,3 +24,4 @@ db.sqlite3
 .git_old
 env
 db.sqlite3
+uploaded_files

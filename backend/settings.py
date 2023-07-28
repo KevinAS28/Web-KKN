@@ -163,6 +163,8 @@ CMS_TEMPLATES = [
     ('artikel.html', 'Artikel Page  '),
 
     ('artikel-detail.html', 'Artikel Detail Page  '),
+
+    ('statistik.html', 'Statistik Page '),
     
     
 ]
