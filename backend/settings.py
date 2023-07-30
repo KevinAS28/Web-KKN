@@ -160,12 +160,17 @@ CMS_TEMPLATES = [
 
     ('peta_desa.html', 'Peta Desa Page  '),
 
-    ('artikel.html', 'Artikel Page  '),
+    ('artikel.html', 'Artikel Page'),
 
-    ('artikel-detail.html', 'Artikel Detail Page  '),
+    ('artikel-detail.html', 'Artikel Detail Page'),
 
-    ('statistik.html', 'Statistik Page '),
+    ('statistik.html', 'Statistik Page'),
+
+    ('umkm.html', 'UMKM Page'),
+
+    ('wisata.html', 'Wisata Page'),
     
+    ('profil-desa.html', 'Profil Desa Page'),
     
 ]
 

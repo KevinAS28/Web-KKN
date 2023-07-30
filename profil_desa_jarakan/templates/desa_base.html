@@ -141,8 +141,8 @@ rel="stylesheet"
                   ></i
                 ></a>
                 <ul>
-                  <li><a href="statistik.html">UMKM</a></li>
-                  <li><a href="statistik.html">Wisata</a></li>
+                  <li><a href="/umkm">UMKM</a></li>
+                  <li><a href="/wisata">Wisata</a></li>
                 </ul>
               </li>
               <li class="dropdown nav-item">
@@ -328,4 +328,6 @@ rel="stylesheet"
     <script src="{% static 'splide/dist/js/splide.min.js' %}"></script>    
     {% render_block "js" %}
   </body>
+  {% block after_body %}
+  {% endblock %}
 </html>

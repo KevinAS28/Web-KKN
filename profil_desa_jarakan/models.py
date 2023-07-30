@@ -1,8 +1,10 @@
 from django.db import models
+from cms.models.fields import PlaceholderField
 from cms.plugin_base import CMSPluginBase, CMSPlugin
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext as _
 from datetime import date
+
 
 class ACardPluginModel(models.Model):
     title = models.CharField(max_length=100)
@@ -38,4 +40,29 @@ class SmallGalleryPlugin(CMSPlugin):
     image = models.ImageField(upload_to='images/', blank=True, null=True)   
 
 class PetaLivePlugin(CMSPlugin):
+    link = models.CharField(max_length=500)
+
+class UMKMPlugin(CMSPlugin):
+    image = models.ImageField(upload_to='images/', blank=True, null=True)   
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=5000)
+    price = models.IntegerField()    
+    link_ecommerce = models.CharField(max_length=1000)
+    placeholder_field = PlaceholderField(slotname="placeholder slot name", null=True, blank=True)
+
+class WisataPlugin(CMSPlugin):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=5000)
+    link_location = models.CharField(max_length=1000)
+
+class ProfilGaleriPlugin(CMSPlugin):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)   
+    tanggal = models.DateField(default=date.today)
+
+class ProfilArtikelPlugin(CMSPlugin):
+    title = models.CharField(max_length=100)
+    deskripsi = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)   
+    tanggal = models.DateField(default=date.today)
     link = models.CharField(max_length=500)

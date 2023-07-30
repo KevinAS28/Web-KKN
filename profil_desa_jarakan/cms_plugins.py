@@ -93,3 +93,63 @@ class PetaLivePlugin(CMSPluginBase):
             
         })
         return context
+
+@plugin_pool.register_plugin  # register the plugin
+class UMKMPlugin(CMSPluginBase):
+    model = jarakan_models.UMKMPlugin
+    module = _("Desa Jarakan")
+    name = _("Card UMKM")
+    render_template = "umkm_card.html"
+    cache = False
+    allow_children = True
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
+class WisataPlugin(CMSPluginBase):
+    model = jarakan_models.WisataPlugin
+    module = _("Desa Jarakan")
+    name = _("Card Wisata")
+    render_template = "wisata_card.html"
+    cache = False
+    allow_children = True
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
+class ProfilGaleriPlugin(CMSPluginBase):
+    model = jarakan_models.ProfilGaleriPlugin
+    module = _("Desa Jarakan")
+    name = _("Card Profil Galeri")
+    render_template = "profil_galeri.html"
+    cache = False
+    allow_children = True
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
+class ProfilArtikelPlugin(CMSPluginBase):
+    model = jarakan_models.ProfilArtikelPlugin
+    module = _("Desa Jarakan")
+    name = _("Card Profil Artikel")
+    render_template = "profil_artikel.html"
+    cache = False
+    allow_children = True
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context

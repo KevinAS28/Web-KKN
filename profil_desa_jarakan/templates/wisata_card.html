@@ -1,0 +1,15 @@
+{% load cms_tags menu_tags sekizai_tags %}
+
+<div class="card mb-3" >
+    {% for plugin in instance.child_plugin_instances %}
+        <div id="child_plugin" >
+            {% render_plugin plugin %}
+        </div>
+    {% endfor %}  
+    <div class="card-body">
+        <h5 class="card-title">{{instance.title}}</h5>
+        <p class="card-text">{{instance.description}}</p>
+        <p class="card-text"><i class="bi bi-geo-alt"></i>
+        <a href="{{instance.link_location}}">  <small class="text-muted">Lokasi Google Maps</small></a>
+    </div>
+  </div>
