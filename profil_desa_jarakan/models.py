@@ -66,3 +66,11 @@ class ProfilArtikelPlugin(CMSPlugin):
     image = models.ImageField(upload_to='images/', blank=True, null=True)   
     tanggal = models.DateField(default=date.today)
     link = models.CharField(max_length=500)
+
+class PerangkatDesaPlugin(CMSPlugin):
+    nama = models.CharField(max_length=100)
+    jabatan = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)   
+
+class ImageResponsivePlugin(CMSPlugin):
+    image = models.ImageField(upload_to='images/', blank=True, null=True)   

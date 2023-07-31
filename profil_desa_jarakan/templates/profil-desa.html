@@ -74,56 +74,8 @@
               <div class="splide" aria-label="Basic Structure Example">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    <li class="splide__slide">
-                      <div class="img_box">
-                        <img src="{% static 'img/1674229576356172.jpg' %}" />
-                        <span class="text-center">
-                          <b>KEPALA DESA</b>
-                          <br />
-                          <b>ABDUL RAHMAN, S.Pd.I</b>
-                        </span>
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="img_box">
-                        <img src="{% static 'img/1674229616713744.jpg' %}" />
-                        <span class="text-center">
-                          <b>KEPALA DESA</b>
-                          <br />
-                          <b>ABDUL RAHMAN, S.Pd.I</b>
-                        </span>
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="img_box">
-                        <img src="{% static 'img/1674229803467371.jpg' %}" />
-                        <span class="text-center">
-                          <b>KEPALA DESA</b>
-                          <br />
-                          <b>ABDUL RAHMAN, S.Pd.I</b>
-                        </span>
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="img_box">
-                        <img src="{% static 'img/1674230764441178.jpg' %}" />
-                        <span class="text-center">
-                          <b>KEPALA DESA</b>
-                          <br />
-                          <b>ABDUL RAHMAN, S.Pd.I</b>
-                        </span>
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="img_box">
-                        <img src="{% static 'img/1682336365777413.jpg' %}" />
-                        <span class="text-center">
-                          <b>KEPALA DESA</b>
-                          <br />
-                          <b>ABDUL RAHMAN, S.Pd.I</b>
-                        </span>
-                      </div>
-                    </li>
+                    {% placeholder "Daftar Perangkat Desa" %}
+
                   </ul>
                 </div>
               </div>
@@ -282,10 +234,6 @@
     <!--Section: Post-->
   </div>
 
-
-  {% endblock content_main %}
-
-  {% block after_body %}
   <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
@@ -293,6 +241,7 @@
   <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <script src="{% static 'splide/dist/js/splide.min.js' %}"></script>
   <!-- Initializations -->
   <script type="text/javascript">
     // Animations initialization
@@ -311,4 +260,8 @@
 
     splide.mount();
   </script>
+  {% endblock content_main %}
+
+  {% block after_body %}
+
   {% endblock %}

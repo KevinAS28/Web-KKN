@@ -153,3 +153,30 @@ class ProfilArtikelPlugin(CMSPluginBase):
             
         })
         return context
+
+@plugin_pool.register_plugin  # register the plugin
+class PerangkatDesaPlugin(CMSPluginBase):
+    model = jarakan_models.PerangkatDesaPlugin
+    module = _("Desa Jarakan")
+    name = _("Card Perangkat Desa")
+    render_template = "card_perangkat_desa.html"
+    cache = False
+    allow_children = True
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+@plugin_pool.register_plugin  # register the plugin
+class ImageResponsive(CMSPluginBase):
+    model = jarakan_models.ImageResponsivePlugin
+    module = _("Desa Jarakan")
+    name = _("Image Responsive")
+    render_template = "image_responsive.html"
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context    

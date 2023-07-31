@@ -8,6 +8,7 @@ urlpatterns = [
     re_path(r'^polls/', include('polls.urls')),
     # re_path(r'^mypolls/', include('polls_cms_integration.urls')),
     re_path(r'^cms', include('cms.urls')),
+    path(r'jarakan/', include('profil_desa_jarakan.urls')),
 ]
 
 if settings.DEBUG:

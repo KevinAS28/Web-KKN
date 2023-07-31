@@ -171,6 +171,8 @@ CMS_TEMPLATES = [
     ('wisata.html', 'Wisata Page'),
     
     ('profil-desa.html', 'Profil Desa Page'),
+
+    ('surat.html', 'Surat Page'),
     
 ]
 
