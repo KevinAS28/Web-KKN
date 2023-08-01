@@ -34,6 +34,36 @@ class CardImagePlugin(CMSPluginBase):
         return context
 
 @plugin_pool.register_plugin  # register the plugin
+class CardImageWidePlugin(CMSPluginBase):
+    model = jarakan_models.HomeCardImageWidePlugin
+    module = _("Desa Jarakan")
+    name = _("Card Wide")
+    render_template = "wide_card.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
+class CardHomeBeritaPlugin(CMSPluginBase):
+    model = jarakan_models.HomeBeritaCardPlugin
+    module = _("Desa Jarakan")
+    name = _("Card Berita Home")
+    render_template = "berita_home.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+            
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
 class CardRowPlugin(CMSPluginBase):
     # model = jarakan_models.ACardPlugin
     module = _("Custom")
@@ -168,6 +198,7 @@ class PerangkatDesaPlugin(CMSPluginBase):
             
         })
         return context
+
 @plugin_pool.register_plugin  # register the plugin
 class ImageResponsive(CMSPluginBase):
     model = jarakan_models.ImageResponsivePlugin

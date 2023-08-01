@@ -3,6 +3,8 @@
 {% load static %}
 
 {% block content_main %}
+    <div style="margin-top:100px;">
+    </div>
     <div
     class="background-image-holder"
     style="background-image: url('https://bungoantoi.desa.id/desa/themes/tema-silir-4.0/assets/images/header-bg.jpg')"
@@ -33,145 +35,94 @@
     </div>
     
     <div class="container mt-5">
-      <!--Section: Jumbotron-->
-  
-      <!--Section: Jumbotron-->
-  
-      <hr class="my-5" />
-  
-      <div class="running-text">
-        <h3
-          class="running-text-header"
-          style="padding-top: 0.25rem; padding-bottom: 0.25rem"
-        >
-          <i
-            class="bi bi-megaphone-fill"
-            style="font-size: 1.125rem; line-height: 1.75rem"
-          ></i>
-          <span style="display: inline-block; margin-left: 0.25rem"
-            >Sekilas Info</span
-          >
-        </h3>
-        <!-- <marquee behavior="alternate" direction="right"
-          ><b
-            >SELAMAT DATANG DI WEB RESMI DESA BUNGO ANTOI KECAMATAN TABIR
-            SELATAN KABUPATEN MERANGIN PROVINSI JAMBI</b
-          ></marquee -->
-        <marquee
-          direction="right"
-          behavior="alternate"
-          style="margin-top: 5px"
-          >
-          {% placeholder "Pesan Bergerak" %}
-        </marquee>
-  
-        <!-- <ul class="running-contehnt">
-          <li class="running-content-text">
-            
-          </li>
-        </ul> -->
+
+      <hr class="my-4" />
+      <div class="text-center"> 
+        <h2>Berita Terkini</h2>
+
       </div>
+      <hr class="my-4" />
+      <!--Section: Jumbotron-->
+
       <section>
         <div class="container mb-5">
           <br /><br />
           <div class="col-div-6">
             <div class="box-1">
-              <div class="b-img">
-                  
-              </div>
-              {% comment %} <h3 class="heading1">Travel</h3> {% endcomment %}
-              <p class="blog-heading">{% placeholder "Judul sub card besar" %}</p>
-              <p class="text">
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the Beautiful
-                Location For Travel
-              </p>
-              <p class="text">
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry.
-              </p>
+              
+              {% placeholder "Gambar Berita Besar" %}
+            
+              {% placeholder "Judul Berita Besar" %}
+              
+              {% placeholder "Deskripsi Berita Besar" %}
+              
               <span class="name">Manoj Singh . SEP 21, 2021</span>
             </div>
           </div>
           <div class="col-div-6">
-            <div class="lr-box">
+
+            <div class="lr-box">  
               <div class="col-div-6">
-                <h3 class="heading1">Food</h3>
-                <p class="blog-heading-1">Good Food Good Health</p>
-                <p class="text">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting
-                </p>
-                <span class="name">Manoj Singh . SEP 21, 2021</span>
+                {% placeholder "Kategori Berita Kecil 1" %}
+                {% placeholder "Judul Berita Kecil 1" %}
+                {% placeholder "Deskripsi Berita Kecil 1" %}
+                {% placeholder "Detail Berita Kecil 1" %}
+  
               </div>
               <div class="col-div-6">
-                <img src="img/images1.jpg" class="b-img-1" />
+                {% placeholder "Gambar Berita Kecil 1" %}
               </div>
               <div class="clearfix"></div>
               <hr class="line" />
             </div>
 
-            <div class="lr-box">
+            <div class="lr-box">  
               <div class="col-div-6">
-                <h3 class="heading1">Technology</h3>
-                <p class="blog-heading-1">Looking for tech blogs</p>
-                <p class="text">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting
-                </p>
-                <span class="name">Manoj Singh . SEP 21, 2021</span>
+                {% placeholder "Kategori Berita Kecil 2" %}
+                {% placeholder "Judul Berita Kecil 2" %}
+                {% placeholder "Deskripsi Berita Kecil 2" %}
+                {% placeholder "Detail Berita Kecil 2" %}
+  
               </div>
               <div class="col-div-6">
-                <img src="img/images5.jpg" class="b-img-1" />
+                {% placeholder "Gambar Berita Kecil 2" %}
               </div>
               <div class="clearfix"></div>
               <hr class="line" />
             </div>
 
-            <div class="lr-box">
+            <div class="lr-box">  
               <div class="col-div-6">
-                <h3 class="heading1">Food</h3>
-                <p class="blog-heading-1">Good Food Good Health</p>
-                <p class="text">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting
-                </p>
-                <span class="name">Manoj Singh . SEP 21, 2021</span>
+                {% placeholder "Kategori Berita Kecil 3" %}
+                {% placeholder "Judul Berita Kecil 3" %}
+                {% placeholder "Deskripsi Berita Kecil 3" %}
+                {% placeholder "Detail Berita Kecil 3" %}
+  
               </div>
               <div class="col-div-6">
-                <img src="img/img2.jpg" class="b-img-1" />
+                {% placeholder "Gambar Berita Kecil 3" %}
               </div>
               <div class="clearfix"></div>
               <hr class="line" />
-            </div>
+            </div>            
+
+
           </div>
 
           <div class="clearfix"></div>
         </div>
       </section>
-      <hr class="my-5" />
-      <h1 class="text-center">
-        <strong>Informasi Umum Desa</strong>
-      </h1>
+
+      <hr class="my-4" />
       <!--Section: Cards-->
-      <section class="text-center">
-        <!--Grid row-->
-        {% placeholder "Card List Row Container" %}
-        <div class="row mb-4 wow fadeIn" name="card_row">
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          {% placeholder "Card List" %}
-          <!--Grid column-->
-  
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-  
-  
-        <!--Pagination-->
-      </section>
-      <!--Section: Cards-->
+      <div class="text-center"> 
+        <h2>Wisata Desa Jarakan</h2>
+
+      </div>
+
+      <hr class="my-4">
+      {% placeholder "Card List" %}
+
     </div>
 
 {% endblock content_main %}

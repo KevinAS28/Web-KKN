@@ -25,6 +25,20 @@ class HomeCardImagePlugin(CMSPlugin):
     image = models.ImageField(upload_to='images/', blank=True, null=True)       
     link_detail = models.CharField(max_length=1000)
 
+class HomeCardImageWidePlugin(CMSPlugin):
+    # home_card_image = models.ForeignKey(HomeCardImage, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=100)    
+    description = models.CharField(max_length=5000)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)       
+    detail = models.CharField(max_length=1000)
+
+class HomeBeritaCardPlugin(CMSPlugin):
+    # home_card_image = models.ForeignKey(HomeCardImage, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=100)    
+    description = models.CharField(max_length=5000)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)       
+    detail = models.CharField(max_length=1000)
+
 class PejabatCardPlugin(CMSPlugin):
     # title = models.ForeignKey(PollPluginModel, on_delete=models.CASCADE)
     tingkat_jabatan = models.CharField(max_length=100)

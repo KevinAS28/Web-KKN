@@ -98,14 +98,21 @@ rel="stylesheet"
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
-              <li class="dropdown nav-item">
+              {% comment %} <li class="dropdown nav-item">
                 <a href="#" class="nav-link waves-effect"
                   >Profil<i class="bi bi-chevron-down ml-1"></i
                 ></a>
                 <ul>
                   <li><a href="/profil-desa">Profil Desa</a></li>
                 </ul>
-              </li>
+              </li> {% endcomment %}
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="/profil-desa"
+                  >Profil Desa</a
+                >
+              </li>              
               <li class="nav-item">
                 <a
                   class="nav-link waves-effect"
@@ -153,13 +160,13 @@ rel="stylesheet"
                   <li><a href="/wisata">Wisata</a></li>
                 </ul>
               </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="nav-link waves-effect"
-                  >Data Desa<i class="bi bi-chevron-down ml-1"></i
-                ></a>
-                <ul>
-                  <li><a href="/statistik-penduduk">Statistik Kependudukan</a></li>
-                </ul>
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="/statistik-penduduk"
+                  
+                  >Statistik Penduduk</a
+                >  
               </li>
               <li class="nav-item">
                 <a
@@ -167,7 +174,8 @@ rel="stylesheet"
                   href="/gallery"
                   
                   >Galleri Desa</a
-                >              
+                >  
+              </li>            
             </ul>
 
             <!-- Right -->
@@ -201,12 +209,9 @@ rel="stylesheet"
                   alt="Logo Desa Bungo Antoi"
                   class="footer-brand-image"
                 />
-                <p class="footer-brand-caption">Desa Bandar Agung</p>
+                {% placeholder "Nama Desa Footer 1" %}
               </div>
-              <p class="footer-info">
-                Website Resmi Pemerintah Desa Bandar Agung, Kecamatan Pendopo,
-                Kabupaten Empat Lawang
-              </p>
+              {% placeholder "Nama Desa Footer 2" %}
             </div>
             <div class="footer-column">
               <h3 class="footer-heading">
@@ -226,22 +231,19 @@ rel="stylesheet"
                 </svg>
                 Hubungi Kami
               </h3>
-              <p class="footer-info">
-                Badan Penyuluhan Pertanian, Desa Bandar Agung, Pendopo, Empat
-                Lawang, 31593
-              </p>
+              {% placeholder "Nama Desa Footer 3" %}
               <ul class="footer-contact">
                 <li class="footer-contact-item">
                   <i class="bi bi-telephone mr-2"></i
-                  ><span>Telepon/Fax: 081379856912</span>
+                  >{% placeholder "No telepon" %}
                 </li>
                 <li class="footer-contact-item">
                   <i class="bi bi-envelope-at-fill mr-2"></i
-                  ><span>Email: bandaragung@gmail.com</span>
+                  ><span>Email: {% placeholder "Email" %}</span>
                 </li>
               </ul>
             </div>
-            <div class="footer-column">
+            {% comment %} <div class="footer-column">
               <h3 class="footer-heading items-center flex">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -304,16 +306,16 @@ rel="stylesheet"
 
                 </a>
               </div>
-            </div>
+            </div> {% endcomment %}
           </div>
         </div>
       
         <!--Copyright-->
         <div class="footer-copyright py-3 mt-5">
-          © 2023 Copyright:
-          <a href="https://mdbootstrap.com/education/bootstrap/" >
-            Bandar Agung
-          </a>
+          {% placeholder "copyright" %}
+
+            
+          
         </div>
         <!--/.Copyright-->
       </footer>
