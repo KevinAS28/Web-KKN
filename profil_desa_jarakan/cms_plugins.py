@@ -58,8 +58,7 @@ class CardHomeBeritaPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({
-            'instance': instance,
-            
+            'instance': instance,  
         })
         return context
 

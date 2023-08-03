@@ -33,555 +33,1795 @@ rel="stylesheet"
 
 {% block content_main %}
 <div class="container" style="margin-top:100px;">
-    <div class="row align-items-start">
-      <div class="col">
-        <div class="accordion-container">
+  <div class="row align-items-start">
+    <div class="col">
+      <div class="accordion-container">
         <div class="card table-container p-3 mb-3">
-            <h1 class="text-heading">Pengisiangi Surat</h1>
+          <h1 class="text-heading">Pengajuan Surat</h1>
         </div>
-          <div class="accordion" id="listSurat">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#formSKTM"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <i class="bi bi-person" style="margin-right: 5px"></i>
-                  <b>Surat Keterangan Tidak Mampu (SKTM)</b>
-                </button>
-              </h2>
-                <div id="formSKTM" class="accordion-collaps collapse" data-bs-parent="listSurat">
-                    <div class="row">
-                        <div class="col">
-                            <form class="card p-3" action="{% url 'generate_surat_form' %}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="form_type" value="sktm"/>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Pemohon</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama0" name="nama" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" name="nik" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <select id="jenisKelamin" class="form-control" name="jenis_kelamin">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir" name="tempat_lahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir" name="tanggal_lahir">
-                                </div>
-                                <div class="mb-3">
-                                <label for="status" class="form-label">Status Perkawinan</label>
-                                <input type="text" class="form-control" id="status" name="status_perkawinan">
-                                </div>
-                                <div class="mb-3">
-                                <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat" name="alamat">
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block">Unduh Surat</button>
-                            </form>
-                        </div>
-                    </div>
+        <script>
+          $("#datepicker").datepicker({
+            uiLibrary: "bootstrap5",
+          });
+        </script>
+        <div class="accordion" id="listSurat">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSKTM"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Keterangan Tidak Mampu (SKTM)</b>
+              </button>
+            </h2>
+            <div
+              id="formSKTM"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form action="{% url 'generate_surat_form' %}" class="card p-3" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="sktm" name="form_type"/>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Pemohon</span>
                 </div>
-            </div>
-          </div>
-          </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#formSN"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <i class="bi bi-person" style="margin-right: 5px"></i>
-                  <b>Surat Nikah</b>
-                </button>
-              </h2>
-                <div id="formSN" class="accordion-collaps collapse" data-bs-parent="listSurat">
-                    <div class="row">
-                        <div class="col">
-                            <form class="card p-3">
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Pemohon</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <select name="jenisKelamin" id="jenisKelamin" class="form-control">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir">
-                                </div>
-                                <div class="mb-3">
-                                <label for="status" class="form-label">Status Perkawinan</label>
-                                <input type="text" class="form-control" id="status">
-                                </div>
-                                <div class="mb-3">
-                                <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="pekerjaan">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block">Unduh Surat</button>
-                            </form>
-                        </div>
-                        <div class="col">
-                            <img src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g" class="img-fluid rounded-start" alt="...">
-                        </div>
-                    </div>
+                <div class="mb-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                    name="nomor_surat"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                    name="nama"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                    name="nik"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                    name="jenis_kelamin"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                    name="tempat_lahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
 
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                    name="tanggal_lahir"
+                  />
                 </div>
+                <div class="mb-3">
+                  <label for="status" class="form-label"
+                    >Status Perkawinan</label
+                  >
+                  <select name="status" id="status" class="form-control" name="status_perkawinan">
+                    <option value="-" selected="selected">---</option>
+                    <option value="kawin">Kawin</option>
+                    <option value="belumKawin">Belum Kawin</option>
+                    <option value="ceraiHidup">Cerai Hidup</option>
+                    <option value="cerai Mati">Cerai Mati</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="pekerjaan" class="form-label"
+                    >Pekerjaan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pekerjaan"
+                    name="pekerjaan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control" name="dusun">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                    name="alamat"
+                  />
+                </div>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="mt-4 mb-4 btn btn-primary btn-block"
+                  >
+                    Unduh Surat
+                  </button>
+                </div>
+              </form>
+              <img
+                src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
             </div>
-      </div>
-    </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#formSKMD"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <i class="bi bi-person" style="margin-right: 5px"></i>
-                  <b>Surat Keterangan Meninggal Dunia</b>
-                </button>
-              </h2>
-                <div id="formSKMD" class="accordion-collaps collapse" data-bs-parent="listSurat">
-                    <div class="row">
-                        <div class="col">
-                            <form class="card p-3">
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Almarhum/Almarhumah</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir">
-                                </div>
-                                <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Agama</label>
-                                <select name="jenisKelamin" id="jenisKelamin" class="form-control">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="L">Islam</option>
-                                    <option value="P">Katolik</option>
-                                    <option value="P">Hindu</option>
-                                    <option value="P">Budha</option>
-                                    <option value="P">Kong Hu Chu</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <select name="jenisKelamin" id="jenisKelamin" class="form-control">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="pekerjaan">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="mb-3  mt-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" aria-describedby="emailHelp">
-                                <button type="submit" class="btn btn-primary btn-block">Unduh Surat</button>
-                            </form>
-                        </div>
-                        <div class="col">
-                            <img src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g" class="img-fluid rounded-start" alt="...">
-                        </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSN"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Nikah</b>
+              </button>
+            </h2>
+            <div
+              id="formSN"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form action="" class="card p-3">
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Pemohon</span>
+                </div>
+                <div class="mb-3">
+                  <label for="kedudukan" class="form-label"
+                    >Kedudukan</label
+                  >
+                  <select
+                    name="kedudukan"
+                    id="kedudukan"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="calonSuami">Calon Suami</option>
+                    <option value="calonIsteri">Calon Isteri</option>
+                  </select>
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Calon Suami</span>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Bin</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="Kewarganegaraan" class="form-label"
+                    >Kewarganegaraan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="kewarganegaraan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="agama" class="form-label">Agama</label>
+                  <select name="agama" id="agama" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Islam</option>
+                    <option value="P">Katolik</option>
+                    <option value="P">Hindu</option>
+                    <option value="P">Budha</option>
+                    <option value="P">Kong Hu Chu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="pekerjaan" class="form-label"
+                    >Pekerjaan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pekerjaan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Calon Istri</span>
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Binti</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="Kewarganegaraan" class="form-label"
+                    >Kewarganegaraan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="kewarganegaraan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="agama" class="form-label">Agama</label>
+                  <select name="agama" id="agama" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="islam">Islam</option>
+                    <option value="katolik">Katolik</option>
+                    <option value="hindu">Hindu</option>
+                    <option value="budha">Budha</option>
+                    <option value="khc">Kong Hu Chu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="pekerjaan" class="form-label"
+                    >Pekerjaan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pekerjaan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Status Perkawinan</span>
+                </div>
+                <div class="mb-3">
+                  <label for="statusL" class="form-label"
+                    >Status Perkawinan Laki-laki</label
+                  >
+                  <select
+                    name="statusL"
+                    id="statusL"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="Jejaka">Jejaka</option>
+                    <option value="Duda">Duda</option>
+                    <option value="Beristri">Beristri</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="istri" class="form-label">Nama Istri</label>
+                  <input type="istri" class="form-control" id="istri" />
+                </div>
+                <div class="mb-3">
+                  <label for="statusL" class="form-label"
+                    >Status Perkawinan Perempuan</label
+                  >
+                  <select
+                    name="statusL"
+                    id="statusL"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="Perawan">Perawan</option>
+                    <option value="Janda">Janda</option>
+                  </select>
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Ayah/Wali/Pengampu dari Pemohon</span>
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Bin</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="Kewarganegaraan" class="form-label"
+                    >Kewarganegaraan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="kewarganegaraan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="agama" class="form-label">Agama</label>
+                  <select name="agama" id="agama" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="islam">Islam</option>
+                    <option value="katolik">Katolik</option>
+                    <option value="hindu">Hindu</option>
+                    <option value="budha">Budha</option>
+                    <option value="khc">Kong Hu Chu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="pekerjaan" class="form-label"
+                    >Pekerjaan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pekerjaan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Ibu/Wali/Pengampu dari Pemohon</span>
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Binti</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="Kewarganegaraan" class="form-label"
+                    >Kewarganegaraan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="kewarganegaraan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="agama" class="form-label">Agama</label>
+                  <select name="agama" id="agama" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="islam">Islam</option>
+                    <option value="katolik">Katolik</option>
+                    <option value="hindu">Hindu</option>
+                    <option value="budha">Budha</option>
+                    <option value="khc">Kong Hu Chu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="pekerjaan" class="form-label"
+                    >Pekerjaan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pekerjaan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="text-center">
+                      <button
+                        type="submit"
+                        class="mt-4 mb-4 btn btn-primary btn-block"
+                      >
+                        Unduh Surat N1
+                      </button>
                     </div>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                      class="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col">
+                    <div class="text-center">
+                      <button
+                        type="submit"
+                        class="mt-4 mb-4 btn btn-primary btn-block"
+                      >
+                        Unduh Surat N2
+                      </button>
+                    </div>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                      class="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col">
+                    <div class="text-center">
+                      <button
+                        type="submit"
+                        class="mt-4 mb-4 btn btn-primary btn-block"
+                      >
+                        Unduh Surat N3
+                      </button>
+                    </div>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                      class="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col">
+                    <div class="text-center">
+                      <button
+                        type="submit"
+                        class="mt-4 mb-4 btn btn-primary btn-block"
+                      >
+                        Unduh Surat N5
+                      </button>
+                    </div>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                      class="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
                 </div>
+              </form>
             </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSKMD"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Keterangan Meninggal Dunia</b>
+              </button>
+            </h2>
+            <div
+              id="formSKMD"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form action="" class="card p-3">
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Almarhum/Almarhumah</span>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="agama" class="form-label">Agama</label>
+                  <select name="agama" id="agama" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Islam</option>
+                    <option value="P">Katolik</option>
+                    <option value="P">Hindu</option>
+                    <option value="P">Budha</option>
+                    <option value="P">Kong Hu Chu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="pekerjaan" class="form-label"
+                    >Pekerjaan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pekerjaan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div
+                  class="mt-3 card-header text-center font-weight-bold"
+                >
+                  <span>Keterangan Kejadian</span>
+                </div>
+                <div class="mb-3">
+                  <label for="hari" class="form-label">Hari</label>
+                  <select name="hari" id="hari" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="senin">Senin</option>
+                    <option value="selasa">Selasa</option>
+                    <option value="rabu">Rabu</option>
+                    <option value="kamis">Kamis</option>
+                    <option value="jumat">Jumat</option>
+                    <option value="sabtu">Sabtu</option>
+                    <option value="minggu">Minggu</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="tanggalMeninggal" class="form-label"
+                    >Tanggal Meninggal</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jamMeninggal" class="form-label"
+                    >Jam Meninggal</label
+                  >
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="jamMeninggal"
+                  />
+                </div>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="mt-4 mb-4 btn btn-primary btn-block"
+                  >
+                    Unduh Surat
+                  </button>
+                </div>
+              </form>
+              <img
+                src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSKU"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Keterangan Usaha</b>
+              </button>
+            </h2>
+            <div
+              id="formSKU"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form class="card p-3">
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Pemilik Usaha</span>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="status" class="form-label"
+                    >Status Perkawinan</label
+                  >
+                  <select name="status" id="status" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="kawin">Kawin</option>
+                    <option value="belumKawin">Belum Kawin</option>
+                    <option value="ceraiHidup">Cerai Hidup</option>
+                    <option value="cerai Mati">Cerai Mati</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Agama</label
+                  >
+                  <select
+                    name="jenisKelamin"
+                    id="jenisKelamin"
+                    class="form-control"
+                  >
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Islam</option>
+                    <option value="P">Katolik</option>
+                    <option value="P">Hindu</option>
+                    <option value="P">Budha</option>
+                    <option value="P">Kong Hu Chu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Pekerjaan</label>
+                  <input type="text" class="form-control" id="alamat" />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Usaha</span>
+                </div>
+                <div class="mb-3">
+                  <label for="namaUsaha" class="form-label"
+                    >Nama Usaha</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="namaUsaha"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="bentukUsaha" class="form-label"
+                    >Bentuk Usaha</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bentukUsaha"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="sejakUsaha" class="form-label"
+                    >Tahun Berdiri</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="sejakUsaha"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label"
+                    >Alamat Usaha</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="mt-4 mb-4 btn btn-primary btn-block"
+                  >
+                    Unduh Surat
+                  </button>
+                </div>
+              </form>
+              <img
+                src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSHT"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Hibah Tanah</b>
+              </button>
+            </h2>
+            <div
+              id="formSHT"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form class="card p-3">
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Penghibah</span>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Pekerjaan</label>
+                  <input type="text" class="form-control" id="alamat" />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Tanah</span>
+                </div>
+                <div class="mb-3">
+                  <label for="panjangTanah" class="form-label"
+                    >Panjang Tanah (Meter)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="panjangTanah"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="lebarTanah" class="form-label"
+                    >Lebar Tanah (Meter)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lebarTanah"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tujuan" class="form-label"
+                    >Peruntukkan Tanah</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Pembuatan Jalan"
+                    id="tujuan"
+                  />
+                </div>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="mt-4 mb-4 btn btn-primary btn-block"
+                  >
+                    Unduh Surat
+                  </button>
+                </div>
+              </form>
+              <img
+                src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSKJB"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Keterangan Jual Beli</b>
+              </button>
+            </h2>
+            <div
+              id="formSKJB"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form class="card p-3">
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Penjual</span>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Pekerjaan</label>
+                  <input type="text" class="form-control" id="alamat" />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Pembeli</span>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Pekerjaan</label>
+                  <input type="text" class="form-control" id="alamat" />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Tanah</span>
+                </div>
+                <div class="mb-3">
+                  <label for="panjangTanah" class="form-label"
+                    >Panjang Tanah (Meter)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="panjangTanah"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="lebarTanah" class="form-label"
+                    >Lebar Tanah (Meter)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lebarTanah"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="harga" class="form-label"
+                    >Harga (Rupiah)</label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text">Rp.</span>
+                    <input type="text" class="form-control" id="harga" />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="terbilang" class="form-label"
+                    >Terbilang (Rupiah)</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="terbilang"
+                    />
+                    <span class="input-group-text">Rupiah</span>
+                  </div>
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Batas Tanah</span>
+                </div>
+                <div class="mb-3">
+                  <label for="batasUtara" class="form-label"
+                    >Batas Utara</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="batasUtara"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="batasSelatan" class="form-label"
+                    >Batas Selatan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="batasSelatan"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="batasTimur" class="form-label"
+                    >Batas Timur</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="batasTimur"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="batasBarat" class="form-label"
+                    >Batas Barat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="batasBarat"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Saksi-Saksi</span>
+                </div>
+                <div class="mb-3">
+                  <label for="saksi1" class="form-label"
+                    >Nama Saksi Pertama</label
+                  >
+                  <input type="text" class="form-control" id="saksi1" />
+                </div>
+                <div class="mb-3">
+                  <label for="saksi2" class="form-label"
+                    >Nama Saksi Kedua</label
+                  >
+                  <input type="text" class="form-control" id="saksi2" />
+                </div>
+                <div class="mb-3">
+                  <label for="saksi3" class="form-label"
+                    >Nama Saksi Ketiga</label
+                  >
+                  <input type="text" class="form-control" id="saksi3" />
+                </div>
+
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="mt-4 mb-4 btn btn-primary btn-block"
+                  >
+                    Unduh Surat
+                  </button>
+                </div>
+              </form>
+              <img
+                src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
             </div>
           </div>
           <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#formSKU"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <i class="bi bi-person" style="margin-right: 5px"></i>
-                  <b>Surat Keterangan Usaha</b>
-                </button>
-              </h2>
-                <div id="formSKU" class="accordion-collaps collapse" data-bs-parent="listSurat">
-                    <div class="row">
-                        <div class="col">
-                            <form class="card p-3">
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Pemilik Usaha</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                                <div class="mb-3  mt-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir">
-                                </div>
-                                <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <select name="jenisKelamin" id="jenisKelamin" class="form-control">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                <label for="status" class="form-label">Status Perkawinan</label>
-                                <input type="text" class="form-control" id="status">
-                                </div>
-                                <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Agama</label>
-                                <select name="jenisKelamin" id="jenisKelamin" class="form-control">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="L">Islam</option>
-                                    <option value="P">Katolik</option>
-                                    <option value="P">Hindu</option>
-                                    <option value="P">Budha</option>
-                                    <option value="P">Kong Hu Chu</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Usaha</span>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="namaUsaha" class="form-label">Nama Usaha</label>
-                                  <input type="text" class="form-control" id="namaUsaha">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="bentukUsaha" class="form-label">Bentuk Usaha</label>
-                                  <input type="text" class="form-control" id="bentukUsaha">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="sejakUsaha" class="form-label">Tahun Berdiri</label>
-                                  <input type="text" class="form-control" id="sejakUsaha">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="alamatUsaha" class="form-label">Alamat Usaha</label>
-                                  <input type="text" class="form-control" id="alamatUsaha">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary btn-block">Unduh Surat</button>
-                            </form>
-                        </div>
-                        <div class="col">
-                            <img src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g" class="img-fluid rounded-start" alt="...">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button d-flex align-items-center"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#formSP"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                <i class="bi bi-person" style="margin-right: 5px"></i>
+                <b>Surat Pernyataan</b>
+              </button>
+            </h2>
+            <div
+              id="formSP"
+              class="accordion-collapse collapse"
+              data-bs-parent="#listSurat"
+            >
+              <form class="card p-3">
+                <div class="card-header text-center font-weight-bold">
+                  <span>Data Diri Pemohon</span>
                 </div>
-              </div>
-          <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#formSHT"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <i class="bi bi-person" style="margin-right: 5px"></i>
-                  <b>Surat Hibah Tanah</b>
-                </button>
-              </h2>
-                <div id="formSHT" class="accordion-collaps collapse" data-bs-parent="listSurat">
-                    <div class="row">
-                        <div class="col">
-                            <form class="card p-3">
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Penghibah</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir">
-                                </div>
-                                <div class="mb-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Tanah</span>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="panjangTanah" class="form-label">Panjang Tanah (Meter)</label>
-                                  <input type="text" class="form-control" id="panjangTanah">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="lebarTanah" class="form-label">Lebar Tanah (Meter)</label>
-                                  <input type="text" class="form-control" id="lebarTanah">
-                                </div>
-                                <div class="mb-3">
-                                <label for="dusun" class="form-label">Dusun</label>
-                                <select name="dusun" id="dusun" class="form-control">
-                                    <option value="-" selected="selected">---</option>
-                                    <option value="I">I</option>
-                                    <option value="II">II</option>
-                                    <option value="III">III</option>
-                                </select>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="tujuan" class="form-label">Peruntukkan Tanah</label>
-                                  <input type="text" class="form-control" id="tujuan">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary btn-block">Unduh Surat</button>
-                            </form>
-                        </div>
-                        <div class="col">
-                          <img src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g" class="img-fluid rounded-start" alt="...">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="mb-3 mt-3">
+                  <label for="nomorSurat" class="form-label"
+                    >Nomor Surat</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomorSurat"
+                    aria-describedby="emailHelp"
+                  />
                 </div>
-              </div>
-          <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#formSKJB"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <i class="bi bi-person" style="margin-right: 5px"></i>
-                  <b>Surat Keterangan Jual Beli</b>
-                </button>
-              </h2>
-                <div id="formSKJB" class="accordion-collaps collapse" data-bs-parent="listSurat">
-                    <div class="row">
-                        <div class="col">
-                            <form class="card p-3">
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Penjual</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir">
-                                </div>
-                                <div class="mb-3  mt-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Diri Pembeli</span>
-                                </div>
-                                <div class="mb-3 mt-3">
-                                <label for="nomorSurat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" id="nomorSurat" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempatLahir">
-                                </div>       
-                                <div class="mb-3">
-                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tanggalLahir">
-                                </div>
-                                <div class="mb-3  mt-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" aria-describedby="emailHelp">
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">
-                                </div>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Tanah</span>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="panjangTanah" class="form-label">Panjang Tanah (Meter)</label>
-                                  <input type="text" class="form-control" id="panjangTanah">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="lebarTanah" class="form-label">Lebar Tanah (Meter)</label>
-                                  <input type="text" class="form-control" id="lebarTanah">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="harga" class="form-label">Harga (Rupiah)</label>
-                                  <input type="text" class="form-control" id="harga">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="terbilang" class="form-label">Terbilang (Rupiah)</label>
-                                  <input type="text" class="form-control" id="terbilang">
-                                </div>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Batas Tanah</span>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="batasUtara" class="form-label">Batas Utara</label>
-                                  <input type="text" class="form-control" id="batasUtara">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="batasSelatan" class="form-label">Batas Selatan</label>
-                                  <input type="text" class="form-control" id="batasSelatan">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="batasTimur" class="form-label">Batas Timur</label>
-                                  <input type="text" class="form-control" id="batasTimur">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="batasBarat" class="form-label">Batas Barat</label>
-                                  <input type="text" class="form-control" id="batasBarat">
-                                </div>
-                                <div class="card-header text-center font-weight-bold">
-                                    <span>Data Saksi-Saksi</span>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="saksi1" class="form-label">Nama Saksi Pertama</label>
-                                  <input type="text" class="form-control" id="saksi1">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="saksi2" class="form-label">Nama Saksi Kedua</label>
-                                  <input type="text" class="form-control" id="saksi2">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="saksi3" class="form-label">Nama Saksi Ketiga</label>
-                                  <input type="text" class="form-control" id="saksi3">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary btn-block">Unduh Surat</button>
-            
-                            </form>
-                        </div>
-                        <div class="col">
-                            <img src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g" class="img-fluid rounded-start" alt="...">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="mb-3">
+                  <label for="nama" class="form-label"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    aria-describedby="emailHelp"
+                  />
                 </div>
-              </div>
+                <div class="mb-3">
+                  <label for="tempatLahir" class="form-label"
+                    >Tempat Lahir</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tempatLahir"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalLahir" class="form-label"
+                    >Tanggal Lahir</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nik"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="jenisKelamin" class="form-label"
+                    >Jenis Kelamin</label
+                  >
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Pekerjaan</label>
+                  <input type="text" class="form-control" id="alamat" />
+                </div>
+                <div class="mb-3">
+                  <label for="dusun" class="form-label">Dusun</label>
+                  <select name="dusun" id="dusun" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="I">Dusun I</option>
+                    <option value="II">Dusun II</option>
+                    <option value="III">Dusun III</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    value="Desa Jarakan Kecamatan Pendopo Kabupaten Empat Lawang"
+                  />
+                </div>
+                <div class="card-header text-center font-weight-bold">
+                  <span>Keterangan Pernyataan Kegiatan</span>
+                </div>
+                <div class="mb-3">
+                  <label for="hari" class="form-label"
+                    >Hari Kegiatan</label
+                  >
+                  <select name="hari" id="hari" class="form-control">
+                    <option value="-" selected="selected">---</option>
+                    <option value="senin">Senin</option>
+                    <option value="selasa">Selasa</option>
+                    <option value="rabu">Rabu</option>
+                    <option value="kamis">Kamis</option>
+                    <option value="jumat">Jumat</option>
+                    <option value="sabtu">Sabtu</option>
+                    <option value="minggu">Minggu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="tanggalKegiatan" class="form-label"
+                    >Tanggal Kegiatan</label
+                  >
+                  <input
+                    class="form-control"
+                    id="datepicker"
+                    type="date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="namaKegiatan" class="form-label"
+                    >Nama Kegiatan</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="namaKegiatan"
+                  />
+                </div>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="mt-4 mb-4 btn btn-primary btn-block"
+                  >
+                    Unduh Surat
+                  </button>
+                </div>
+              </form>
+              <img
+                src="https://drive.google.com/uc?export=view&id=14enRHfpd0ujll4Rbh4om9IdQBDgjEC-g"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap tooltips -->
