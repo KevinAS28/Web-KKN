@@ -3,9 +3,9 @@ import os
 import dj_database_url
 from django_storage_url import dsn_configured_storage_class
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', '<a string of random characters>')
@@ -119,7 +119,10 @@ TEMPLATES = [
                 'django.template.context_processors.csrf',
                 'django.template.context_processors.tz',
                 'django.template.context_processors.i18n',
-
+            
+            
+                'profil_desa_jarakan.custom_context_processor.custom_variables',
+            
                 'cms.context_processors.cms_settings',
                 'sekizai.context_processors.sekizai',
 
@@ -173,7 +176,8 @@ CMS_TEMPLATES = [
     ('profil-desa.html', 'Profil Desa Page'),
 
     ('surat.html', 'Surat Page'),
-    
+
+    ('ubah_informasi.html', 'Ubah Informasi Page'),    
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'

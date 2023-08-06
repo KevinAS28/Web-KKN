@@ -6,8 +6,8 @@ from profil_desa_jarakan import models as jarakan_models
 @plugin_pool.register_plugin  # register the plugin
 class HomeCardImagePlugin(CMSPluginBase):
     model = jarakan_models.HomeCardImagePlugin
-    module = _("Desa Jarakan")
-    name = _("Card Image Plugin")
+    module = _("1. Profil Desa")
+    name = _("Kartu dengan gambar")
     render_template = "card_plugin.html"
     cache = False
 
@@ -21,7 +21,7 @@ class HomeCardImagePlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class CardImagePlugin(CMSPluginBase):
     model = jarakan_models.HomeCardImagePlugin
-    module = _("Desa Jarakan")
+    module = _("1. Profil Desa")
     name = _("---")
     render_template = "card_plugin.html"
     cache = False
@@ -36,8 +36,8 @@ class CardImagePlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class CardImageWidePlugin(CMSPluginBase):
     model = jarakan_models.HomeCardImageWidePlugin
-    module = _("Desa Jarakan")
-    name = _("Card Wide")
+    module = _("1. Profil Desa")
+    name = _("Kartu dengan gambar (lebar)")
     render_template = "wide_card.html"
     cache = False
 
@@ -51,8 +51,8 @@ class CardImageWidePlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class CardHomeBeritaPlugin(CMSPluginBase):
     model = jarakan_models.HomeBeritaCardPlugin
-    module = _("Desa Jarakan")
-    name = _("Card Berita Home")
+    module = _("1. Profil Desa")
+    name = _(("Kartu Berita Home"))
     render_template = "berita_home.html"
     cache = False
 
@@ -81,8 +81,8 @@ class CardRowPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class PejabatPlugin(CMSPluginBase):
     model = jarakan_models.PejabatCardPlugin
-    module = _("Desa Jarakan")
-    name = _("Pejabat Plugin")
+    module = _("1. Profil Desa")
+    name = _("Kartu Pejabat")
     render_template = "pejabat_card.html"
     cache = False
 
@@ -96,8 +96,8 @@ class PejabatPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class SmallGalleryPlugin(CMSPluginBase):
     model = jarakan_models.SmallGalleryPlugin
-    module = _("Desa Jarakan")
-    name = _("Small Galery")
+    module = _("1. Profil Desa")
+    name = _("Galeri kecil")
     render_template = "small_gallery.html"
     cache = False
 
@@ -111,7 +111,7 @@ class SmallGalleryPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class PetaLivePlugin(CMSPluginBase):
     model = jarakan_models.PetaLivePlugin
-    module = _("Desa Jarakan")
+    module = _("1. Profil Desa")
     name = _("Peta Live")
     render_template = "peta_iframe.html"
     cache = False
@@ -126,8 +126,8 @@ class PetaLivePlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class UMKMPlugin(CMSPluginBase):
     model = jarakan_models.UMKMPlugin
-    module = _("Desa Jarakan")
-    name = _("Card UMKM")
+    module = _("1. Profil Desa")
+    name = _("Kartu UMKM")
     render_template = "umkm_card.html"
     cache = False
     allow_children = True
@@ -141,8 +141,8 @@ class UMKMPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class WisataPlugin(CMSPluginBase):
     model = jarakan_models.WisataPlugin
-    module = _("Desa Jarakan")
-    name = _("Card Wisata")
+    module = _("1. Profil Desa")
+    name = _("Kartu Wisata")
     render_template = "wisata_card.html"
     cache = False
     allow_children = True
@@ -156,8 +156,8 @@ class WisataPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class ProfilGaleriPlugin(CMSPluginBase):
     model = jarakan_models.ProfilGaleriPlugin
-    module = _("Desa Jarakan")
-    name = _("Card Profil Galeri")
+    module = _("1. Profil Desa")
+    name = _("Kartu galeri profil")
     render_template = "profil_galeri.html"
     cache = False
     allow_children = True
@@ -171,8 +171,8 @@ class ProfilGaleriPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class ProfilArtikelPlugin(CMSPluginBase):
     model = jarakan_models.ProfilArtikelPlugin
-    module = _("Desa Jarakan")
-    name = _("Card Profil Artikel")
+    module = _("1. Profil Desa")
+    name = _("Kartu artikel profil")
     render_template = "profil_artikel.html"
     cache = False
     allow_children = True
@@ -186,8 +186,8 @@ class ProfilArtikelPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class PerangkatDesaPlugin(CMSPluginBase):
     model = jarakan_models.PerangkatDesaPlugin
-    module = _("Desa Jarakan")
-    name = _("Card Perangkat Desa")
+    module = _("1. Profil Desa")
+    name = _("Kartu Perangkat Desa")
     render_template = "card_perangkat_desa.html"
     cache = False
     allow_children = True
@@ -201,8 +201,8 @@ class PerangkatDesaPlugin(CMSPluginBase):
 @plugin_pool.register_plugin  # register the plugin
 class ImageResponsive(CMSPluginBase):
     model = jarakan_models.ImageResponsivePlugin
-    module = _("Desa Jarakan")
-    name = _("Image Responsive")
+    module = _("1. Profil Desa")
+    name = _("Kartu Gambar (Responsive)")
     render_template = "image_responsive.html"
     def render(self, context, instance, placeholder):
         context.update({

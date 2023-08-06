@@ -3,10 +3,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import *
 from profil_desa_jarakan.module_helper import replace_text_in_docx, docx2pdf
+from django.conf import settings
+from django.http import HttpResponseRedirect
+
+import json
+import os
+
 
 FORM_NAMES = {
     'sktm': SKTMForm,
-    
+    'kematian': KematianForm,
+    'usaha': UsahaForm
 }
 
 def contact_view(request):
@@ -41,7 +48,7 @@ def generate_surat(request):
             field_names = list(form.fields.keys())
             replacement_data = {item.upper():form.cleaned_data[item] for item in field_names}
 
-            pdf_path, cmd_output = docx2pdf(replace_text_in_docx('sktm', replacement_data))
+            pdf_path, cmd_output = docx2pdf(replace_text_in_docx(form_name, replacement_data))
             response = HttpResponse(open(pdf_path, 'rb').read(), content_type='application/pdf')
             
             response['Content-Disposition'] = f'attachment; filename={form_name}.pdf'
@@ -56,4 +63,17 @@ def generate_surat(request):
             
             return response                 
 
-    
+
+def ubah_informasi(request):
+    desa_info = json.loads(open(os.path.join(settings.BASE_DIR, 'info_desa.json')).read())
+    if request.method == 'POST':
+        form = InfoDesaForm(request.POST)
+        if form.is_valid():
+            field_names = list(form.fields.keys())
+            for fn in field_names:
+                desa_info[fn] = form.cleaned_data[fn]
+            with open(os.path.join(settings.BASE_DIR, 'info_desa.json'), 'w+') as info_desa:
+                info_desa.write(json.dumps(desa_info))
+            return HttpResponseRedirect('/')
+
+            

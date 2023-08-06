@@ -6,21 +6,34 @@ from datetime import date
 
 from django.conf import settings
 
+
 from docx import Document
+
+import json
 
 DOCX_TEMPLATES = {
     'contoh': os.path.join(settings.BASE_DIR, 'docx_templates' ,'surat_contoh.docx'),
     'sktm': os.path.join(settings.BASE_DIR, 'docx_templates' ,'sktm.docx'),
     'gagal': os.path.join(settings.BASE_DIR, 'docx_templates' ,'gagal.docx'),
+    'kematian': os.path.join(settings.BASE_DIR, 'docx_templates' ,'kematian1.docx'),
+    'usaha': os.path.join(settings.BASE_DIR, 'docx_templates' ,'usaha.docx'),
 }
 
 INDONESIA_MONTHS = "Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember".split()
 
 def replace_text_in_docx(template_name, replacement_data):
+    desa_info = json.loads(open(os.path.join(settings.BASE_DIR, 'info_desa.json')).read())
+    IN_DESA_NAMES = {
+        'NAMA_KEPALA_DESA':desa_info['kepala_desa'],
+        'NAMA_DESA': desa_info['nama_desa']
+    }
+
     file_path = DOCX_TEMPLATES[template_name]
+    print('template_path:', file_path)
     doc = Document(file_path)
     builtin_data_replacements = {
-        'TANGGAL_HARI_INI': f'{date.today().day} - {INDONESIA_MONTHS[date.today().month-1]} - {date.today().year}'
+        'TANGGAL_HARI_INI': f'{date.today().day} - {INDONESIA_MONTHS[date.today().month-1]} - {date.today().year}',
+        **IN_DESA_NAMES
     }
     replacement_data.update(builtin_data_replacements)
 

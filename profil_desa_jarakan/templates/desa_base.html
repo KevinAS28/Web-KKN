@@ -74,10 +74,9 @@ rel="stylesheet"
           <!-- Brand -->
           <a class="navbar-brand waves-effect" href="/">
             <img
-              src="https://bungoantoi.desa.id/desa/logo/LogoDesaBungoantoi__sid__fMCA4gV.png"
-              alt="Girl in a jacket"
-              width="50px"
-              height="50px"
+              src="{% static 'img/logo_empat_lawang.png' %}"
+              alt="Logo Desa"
+              style="max-width:50px;max-height:50px;"
             />
           </a>
 
@@ -168,14 +167,32 @@ rel="stylesheet"
                   >Statistik Penduduk</a
                 >  
               </li>
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a
                   class="nav-link waves-effect"
                   href="/gallery"
                   
                   >Galleri Desa</a
                 >  
-              </li>            
+              </li>     {% endcomment %}
+              {% if cms_toolbar %}        
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="/ubah-informasi"
+                  
+                  >Ubah Informasi</a
+                >  
+              </li>    
+              <li class="nav-item">
+                <a
+                  class="nav-link waves-effect"
+                  href="/admin"
+                  
+                  >Admin</a
+                >  
+              </li>                  
+              {% endif %}
             </ul>
 
             <!-- Right -->
@@ -209,10 +226,10 @@ rel="stylesheet"
                   alt="Logo Desa Bungo Antoi"
                   class="footer-brand-image"
                 />
-                <p class="footer-brand-caption">Desa Jarakan</p>
+                <p class="footer-brand-caption">Desa {{nama_desa}}</p>
               </div>
               <p class="footer-info">
-                Website Resmi Pemerintah Desa Jarakan, Kecamatan Pendopo,
+                Website Resmi Pemerintah Desa {{nama_desa}}, Kecamatan Pendopo,
                 Kabupaten Empat Lawang
               </p>
             </div>
@@ -241,11 +258,11 @@ rel="stylesheet"
               <ul class="footer-contact">
                 <li class="footer-contact-item">
                   <i class="bi bi-telephone mr-2"></i
-                  ><span>Telepon/Fax: 081379856912</span>
+                  ><span>Telepon/Fax: {{telp_desa}}</span>
                 </li>
                 <li class="footer-contact-item">
                   <i class="bi bi-envelope-at-fill mr-2"></i
-                  ><span>Email: desajarakan@gmail.com</span>
+                  ><span>Email: {{email_desa}}</span>
                 </li>
               </ul>
             </div>
@@ -316,7 +333,7 @@ rel="stylesheet"
   
         <!--Copyright-->
         <div class="footer-copyright py-3 mt-5">
-          © 2023 Copyright: Jarakan
+          © 2023 Copyright: {{nama_desa}}
           
         </div>
         <!--/.Copyright-->
