@@ -27,240 +27,160 @@
 
 {% block content_main %}
 <div class="container" style="margin-top:100px;">
-    <!--Section: Post-->
-    <section>
+  <!--Section: Post-->
+  <section>
       <!--Grid row-->
       <div class="row">
-        <!--Grid column-->
-        <div class="col-md-8 mb-4">
-          <!--Featured Image-->
-          <div class="card mb-4 wow fadeIn p-2">
-            <div class="card-body">
-              <div class="content-header">
-                <b class="h4 my-4"><b>Profil Desa</b></b>
+          <!--Grid column-->
+          <div class="col-md-8 mb-4">
+              <!--Featured Image-->
+              <div class="card mb-4 wow fadeIn p-2">
+                  <div class="card-body">
+                      <div class="content-header">
+                          <b class="h4 my-4"><b>Profil Desa</b></b>
+                      </div>
+
+                      {% placeholder "gambar utama" %}                    </div>
               </div>
-              
-              {% placeholder "gambar utama" %}
+              <!--/.Featured Image-->
+
+              <!--Card-->
+              <!--/.Card-->
+              <!--Card-->
+              <div class="card mb-4 wow fadeIn">
+                  <!--Card content-->
+                  <div class="card-body">
+                      <div class="content-header"></div>
+
+                      {% placeholder "konten deskripsi" %}
+                  </div>
               </div>
-            </div>
-          </div>
-          <!--/.Featured Image-->
+              <!--/.Card-->
 
-          <!--Card-->
-          <!--/.Card-->
-          <!--Card-->
-          <div class="card mb-4 wow fadeIn">
-            <!--Card content-->
-            <div class="card-body">
-              <div class="content-header"></div>
+              <!--Card-->
 
-                {% placeholder "konten deskripsi" %}
-            </div>
-          </div>
-          <!--/.Card-->
+              <div class="card mb-4 wow fadeIn">
+                  <!--Card content-->
+                  <div class="card-body">
+                      <div class="content-header">
+                          <b class="h5 my-4">Perangkat Desa</b>
+                      </div>
+                  </div>
 
-          <!--Card-->
-
-          <div class="card mb-4 wow fadeIn">
-            <!--Card content-->
-            <div class="card-body">
-              <div class="content-header">
-                <b class="h5 my-4">Perangkat Desa</b>
+                  <!--Card content-->
+                  <div class="card-body">
+                      <div class="splide" aria-label="Basic Structure Example">
+                          <div class="splide__track">
+                              <ul class="splide__list">
+                                  {% placeholder "Daftar Perangkat Desa" %}
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
+              <!--/.Card-->
 
-            <!--Card content-->
-            <div class="card-body">
-                {% placeholder "splide test" %}
-              <div class="splide" aria-label="Basic Structure Example">
-                <div class="splide__track">
-                  <ul class="splide__list">
-                    {% placeholder "Daftar Perangkat Desa" %}
+              <!--Reply-->
+              <div class="card mb-3 wow fadeIn">
+                  <div class="card-header font-weight-bold">Kritik Dan Saran</div>
+                  <div class="card-body">
+                      <!-- Default form reply -->
+                      <form>
+                          <!-- Comment -->
+                          <div class="form-group">
+                              <label for="replyFormComment">Your comment</label>
+                              <textarea class="form-control" id="replyFormComment" rows="5"></textarea>
+                          </div>
 
-                  </ul>
-                </div>
+                          <!-- Name -->
+                          <label for="replyFormName">Your name</label>
+                          <input type="email" id="replyFormName" class="form-control" />
+
+                          <br />
+
+                          <!-- Email -->
+                          <label for="replyFormEmail">Your e-mail</label>
+                          <input type="email" id="replyFormEmail" class="form-control" />
+
+                          <div class="text-center mt-4">
+                              <button class="btn btn-info btn-md" type="submit">
+                                  Post
+                              </button>
+                          </div>
+                      </form>
+                      <!-- Default form reply -->
+                  </div>
               </div>
-            </div>
+              <!--/.Reply-->
           </div>
-          <!--/.Card-->
+          <!--Grid column-->
 
-          <!--Reply-->
-          <div class="card mb-3 wow fadeIn">
-            <div class="card-header font-weight-bold">Kritik Dan Saran</div>
-            <div class="card-body">
-              <!-- Default form reply -->
-              <form>
-                <!-- Comment -->
-                <div class="form-group">
-                  <label for="replyFormComment">Your comment</label>
-                  <textarea
-                    class="form-control"
-                    id="replyFormComment"
-                    rows="5"
-                  ></textarea>
-                </div>
+          <!--Grid column-->
+          <div class="col-md-4 mb-4">
+              <!--Card: Jumbotron-->
+              <div class="card mb-4 wow fadeIn">
+                  <div class="card-header"><b>Galeri Terbaru</b></div>
 
-                <!-- Name -->
-                <label for="replyFormName">Your name</label>
-                <input
-                  type="email"
-                  id="replyFormName"
-                  class="form-control"
-                />
-
-                <br />
-
-                <!-- Email -->
-                <label for="replyFormEmail">Your e-mail</label>
-                <input
-                  type="email"
-                  id="replyFormEmail"
-                  class="form-control"
-                />
-
-                <div class="text-center mt-4">
-                  <button class="btn btn-info btn-md" type="submit">
-                    Post
-                  </button>
-                </div>
-              </form>
-              <!-- Default form reply -->
-            </div>
-          </div>
-          <!--/.Reply-->
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-4">
-          <!--Card: Jumbotron-->
-          <div class="card mb-4 wow fadeIn">
-            <div class="card-header"><b>Galeri Terbaru</b></div>
-
-            <!--Card content-->
-            <div class="card-body">
-              <div class="new-post-card">
-                <ul class="list-unstyled">
-                    {% placeholder "Profil Galeri" %}
-
-                </ul>
+                  <!--Card content-->
+                  <div class="card-body">
+                      <div class="new-post-card">
+                          <ul class="list-unstyled">
+                              {% placeholder "Profil Galeri" %}
+                          </ul>
+                      </div>
+                  </div>
               </div>
-            </div>
-          </div>
-          <!--Card: Jumbotron-->
+              <!--Card: Jumbotron-->
 
-          <!--Card-->
-          <div class="card mb-4 wow fadeIn">
-            <div class="card-header"><b>Artikel Terbaru</b></div>
+              <!--Card-->
+              <div class="card mb-4 wow fadeIn">
+                  <div class="card-header"><b>Artikel Terbaru</b></div>
 
-            <!--Card content-->
-            <div class="card-body">
-              <div class="new-post-card">
-                <ul class="list-unstyled">
-                    {% placeholder "profil artikel" %}
-                  <li class="media">
-                    <img
-                      class="d-flex mr-3"
-                      src="{% static 'img/WhatsApp Image 2023-07-05 at 8.49.43 PM.jpeg' %}"
-                      alt="Generic placeholder image"
-                    />
-                    <div class="media-body">
-                      <a href="">
-                        <h5 class="mt-0 mb-1 font-weight-bold">
-                          Rapat Koordinasi Dengan Kades
-                        </h5>
-                      </a>
-                      Rapat harian kades dengan perangkat desa
-                      <a href="#">...Selengkapnya</a>
-                    </div>
-                  </li>
-                  <li class="media my-4">
-                    <img
-                      class="d-flex mr-3"
-                      src="{% static 'img/newpost2.jpeg' %}"
-                      alt="An image"
-                    />
-                    <div class="media-body">
-                      <a href="">
-                        <h5 class="mt-0 mb-1 font-weight-bold">
-                          Sambal Goreng Ati
-                        </h5>
-                      </a>
-                      Sambal goreng ati merupakan makanan khas desa
-                      <a href="#">...Selengkapnya</a>
-                    </div>
-                  </li>
-                  <li class="media my-4">
-                    <img
-                      class="d-flex mr-3"
-                      src="{% static 'img/newpost4.jpeg' %}"
-                      alt="An image"
-                    />
-                    <div class="media-body">
-                      <a href="">
-                        <h5 class="mt-0 mb-1 font-weight-bold">
-                          Ini terong bukan cabe
-                        </h5>
-                      </a>
-                      Terong merupakan makanan khas desa
-                      <a href="#">...Selengkapnya</a>
-                    </div>
-                  </li>
-                  <li class="media">
-                    <img
-                      class="d-flex mr-3"
-                      src="{% static 'img/newpost3.jpeg' %}"
-                      alt="Generic placeholder image"
-                    />
-                    <div class="media-body">
-                      <a href="">
-                        <h5 class="mt-0 mb-1 font-weight-bold">
-                          KKN (Kuliah Kerja Nyebat)
-                        </h5>
-                      </a>
-                      KKN merupakan kegiatan mahasiswa untuk membantu
-                      <a href="#">...Selengkapnya</a>
-                    </div>
-                  </li>
-                </ul>
+                  <!--Card content-->
+                  <div class="card-body">
+                      <div class="new-post-card">
+                          <ul class="list-unstyled">
+                              {% placeholder "profil artikel" %}
+
+                          </ul>
+                      </div>
+                  </div>
               </div>
-            </div>
+              <!--/.Card-->
           </div>
-          <!--/.Card-->
-        </div>
-        <!--Grid column-->
+          <!--Grid column-->
       </div>
       <!--Grid row-->
-    </section>
-    <!--Section: Post-->
-  </div>
+  </section>
+  <!--Section: Post-->
+</div>
 
-  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
-  <script src="{% static 'splide/dist/js/splide.min.js' %}"></script>
-  <!-- Initializations -->
-  <script type="text/javascript">
-    // Animations initialization
-    new WOW().init();
-    //splide.js
-    var splide = new Splide(".splide", {
-      type: "loop",
-      perPage: 3,
-      focus: "center",
-      autoplay: true,
-      interval: 2000,
-      pauseOnHover: true,
-      gap: "1.5rem",
-      pagination: false,
-    });
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+<script src="{% static 'splide/dist/js/splide.min.js' %}"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+  //splide.js
+  var splide = new Splide(".splide", {
+    type: "loop",
+    perPage: 3,
+    focus: "center",
+    autoplay: true,
+    interval: 2000,
+    pauseOnHover: true,
+    gap: "1.5rem",
+    pagination: false,
+  });
 
-    splide.mount();
-  </script>
+  splide.mount();
+</script>
   {% endblock content_main %}
 
   {% block after_body %}
