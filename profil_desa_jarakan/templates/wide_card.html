@@ -1,8 +1,10 @@
 <div class="card mb-3">
-    <img src="{{instance.image.url}}" class="card-img-top" alt="..." height="300">
-    <div class="card-body">
-    <h5 class="card-title">{{instance.title}}</h5>
-    <p class="card-text">{{instance.description}}</p>
-    <p class="card-text"><small class="text-muted">{{instance.detail}}</small></p>
-    </div>
+    <a href="{{instance.redirect_url}}">
+        <img src="{{instance.image.url}}" class="card-img-top" alt="..." height="300">
+        <div class="card-body">
+        <h5 class="card-title">{{instance.title}}</h5>
+        <p class="card-text">{{instance.description}}</p>
+        <p class="card-text"><small class="text-muted">{{instance.detail}}</small></p>
+        </div>
+    </a>
 </div>

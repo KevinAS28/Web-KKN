@@ -76,4 +76,16 @@ def ubah_informasi(request):
                 info_desa.write(json.dumps(desa_info))
             return HttpResponseRedirect('/')
 
+def chat_wa(request):
+    desa_info = json.loads(open(os.path.join(settings.BASE_DIR, 'info_desa.json')).read())
+    if request.method == 'POST':
+        form = ChatBotForm(request.POST)
+        if form.is_valid():
+            nama = form.cleaned_data['nama']
+            pertanyaan = form.cleaned_data['pertanyaan']
+            formatted_text = f'Assalamualaikum Warahmatullahi Wabarakatuh, perkenalkan saya {nama}, saya mendapatkan nomor anda dari website profil desa. Saya izin bertanya: {pertanyaan}, Terima kasih atas waktunya'
+            redirect_url = f'https://wa.me/{desa_info["no_wa"]}?text={formatted_text}'
+            return HttpResponseRedirect(redirect_url)
+    
+
             

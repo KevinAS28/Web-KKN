@@ -122,3 +122,8 @@ class InfoDesaForm(forms.Form):
     kepala_desa = forms.CharField(max_length=100, required=False)
     email_desa = forms.CharField(max_length=100, required=False)
     telp_desa = forms.CharField(max_length=100, required=False)
+    no_wa = forms.CharField(max_length=100, required=False)
+
+class ChatBotForm(forms.Form):
+    nama = forms.CharField(max_length=100)
+    pertanyaan = forms.CharField(max_length=100)

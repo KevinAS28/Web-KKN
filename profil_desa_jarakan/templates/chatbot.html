@@ -37,7 +37,7 @@ rel="stylesheet"
     <div class="col">
       <div class="accordion-container">
         <div class="card table-container p-3 mb-3">
-          <h1 class="text-heading">Pengubahan Informasi</h1>
+          <h1 class="text-heading">Chat WA</h1>
         </div>
         <script>
           $("#datepicker").datepicker({
@@ -49,77 +49,43 @@ rel="stylesheet"
         
         data-bs-parent="#listSurat"
       >
-        <form action="{% url 'ubah_informasi' %}" class="card p-3" method="POST">
+        <form action="{% url 'chatbot' %}" class="card p-3" method="POST">
           {% csrf_token %}
-          <input type="hidden" value="sktm" name="form_type"/>
+          {% comment %} <input type="hidden" value="sktm" name="form_type"/> {% endcomment %}
           {% comment %} <div class="card-header text-center font-weight-bold">
             <span>Data Diri Pemohon</span>
           </div> {% endcomment %}
           <div class="mb-3">
             <label for="namaKepalaDesa" class="form-label"
-              >Nama Kepala Desa</label
+              >Nama Anda</label
             >
             <input
               type="text"
               class="form-control"
               id="nomorSurat"
               aria-describedby="emailHelp"
-              name="kepala_desa"
+              name="nama"
             />
           </div>
           <div class="mb-3">
             <label for="nama" class="form-label"
-              >Nama Desa</label
+              >Pertanyaan Anda</label
             >
             <input
               type="text"
               class="form-control"
               id="nama"
               aria-describedby="emailHelp"
-              name="nama_desa"
+              name="pertanyaan"
             />
           </div>
-          <div class="mb-3">
-            <label for="nik" class="form-label">Email Desa</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nik"
-              aria-describedby="emailHelp"
-              name="email_desa"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="nik" class="form-label">No Telp Desa</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nik"
-              aria-describedby="emailHelp"
-              name="telp_desa"
-            />
-          </div>          
-          <div class="mb-3">
-            <label for="nowa" class="form-label"
-              >Nomor WA yang bisa dikontak</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="nowa"
-              aria-describedby="emailHelp"
-              name="no_wa"
-            />
-          </div>            
-          <div class="text-center">
-            <button
-              type="submit"
-              class="mt-4 mb-4 btn btn-primary btn-block"
-            >
-              Ubah Informasi Desa
-            </button>
-          </div>
-        
+          <button
+          type="submit"
+          class="mt-4 mb-4 btn btn-primary btn-block"
+        >
+          Kirim Pertanyaan
+        </button>
+
         </form>
 
       </div>

@@ -31,6 +31,8 @@ class HomeCardImageWidePlugin(CMSPlugin):
     description = models.CharField(max_length=5000)
     image = models.ImageField(upload_to='images/', blank=True, null=True)       
     detail = models.CharField(max_length=1000)
+    redirect_link = models.CharField(max_length=100, blank=True, null=True)    
+
 
 class HomeBeritaCardPlugin(CMSPlugin):
     # home_card_image = models.ForeignKey(HomeCardImage, on_delete=models.CASCADE, null=True)

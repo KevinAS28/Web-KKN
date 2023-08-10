@@ -178,6 +178,8 @@ CMS_TEMPLATES = [
     ('surat.html', 'Surat Page'),
 
     ('ubah_informasi.html', 'Ubah Informasi Page'),    
+
+    ('chatbot.html', 'ChatBot Page')
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
@@ -245,6 +247,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles_collected')
 ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_collected')
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
