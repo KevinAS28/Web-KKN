@@ -18,6 +18,7 @@ def config(key):
 project_name = config('PROJECT_NAME')
 uwsgi_socket = os.path.join(config('PROJECT_PATH'), f'{project_name}_uwsgi.sock')
 uwsgi_path = os.path.join(config('PROJECT_PATH'), f'{project_name}_uwsgi.ini')
+print(f'uwsgi --ini {uwsgi_path} -s {uwsgi_socket} --chmod-socket=777')
 
 #generate uwsgi configuration based on production config
 uwsgi_config = replace_config(uwsgi_config, 'HOST_WITH_PROTOCOL', f'{config("PROTOCOL")}://{config("HOST")}')
@@ -28,7 +29,7 @@ uwsgi_config = replace_config(uwsgi_config, 'PROJECT_SETTINGS', os.path.join(con
 
 #generate nginx configuration based on production config
 nginx_config = replace_config(nginx_config, 'HOST')
-nginx_config = replace_config(nginx_config, 'HOST_WITH_PROTOCOL', f'www.{config("HOST")}')
+nginx_config = replace_config(nginx_config, 'WWW_HOST', f'www.{config("HOST")}')
 nginx_config = replace_config(nginx_config, 'UWSGI_SOCKET', uwsgi_socket)
 
 with open(os.path.join('/etc/nginx/sites-available', f'{project_name}.conf'), 'w+') as nginx_config_file:
@@ -38,3 +39,8 @@ os.system(f'ln -s /etc/nginx/sites-available/{project_name}.conf /etc/nginx/site
 
 with open(uwsgi_path, 'w+') as uwsgi_config_file:
     uwsgi_config_file.write(uwsgi_config)
+
+run_instructions = f'''
+uwsgi --ini {uwsgi_path} -s {uwsgi_socket} --chmod-socket=777
+service nginx restart
+'''
