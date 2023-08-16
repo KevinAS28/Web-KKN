@@ -25,7 +25,7 @@ uwsgi_config = replace_config(uwsgi_config, 'HOST_WITH_PROTOCOL', f'{config("PRO
 uwsgi_config = replace_config(uwsgi_config, 'VIRTUALENV_PATH')
 uwsgi_config = replace_config(uwsgi_config, 'PROJECT_PATH')
 uwsgi_config = replace_config(uwsgi_config, 'PY_WSGI_FILE', os.path.join(config("PROJECT_PATH"), config("PROJECT_MAIN_APP"), 'wsgi.py'))
-uwsgi_config = replace_config(uwsgi_config, 'PROJECT_SETTINGS', os.path.join(config("PROJECT_PATH"), config("PROJECT_MAIN_APP"), 'settings.py'))
+uwsgi_config = replace_config(uwsgi_config, 'PROJECT_SETTINGS', f'{config("PROJECT_MAIN_APP")}.settings')
 
 #generate nginx configuration based on production config
 nginx_config = replace_config(nginx_config, 'HOST')
