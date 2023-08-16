@@ -9,23 +9,26 @@ uwsgi_config = open(os.path.join(cwd, 'production', 'uwsgi.ini')).read()
 nginx_config = open(os.path.join(cwd, 'production', 'web.ini')).read()
 
 def replace_config(config_string:str, config_key:str, config_value:str=None):
-    return config_string.replace('{{%s}}'%(config_key), config_value if not (config_value is None) else production_config.get(config_key))
+    return config_string.replace('{{%s}}'%(config_key), config_value if not (config_value is None) else config(config_key))
+
+def config(key):
+    return production_config.get('PRODUCTION', key)
 
 
-project_name = production_config.get('PROJECT_NAME')
-uwsgi_socket = os.path.join(production_config.get('PROJECT_PATH'), f'{project_name}_uwsgi.sock')
-uwsgi_path = os.path.join(production_config.get('PROJECT_PATH'), f'{project_name}_uwsgi.ini')
+project_name = config('PROJECT_NAME')
+uwsgi_socket = os.path.join(config('PROJECT_PATH'), f'{project_name}_uwsgi.sock')
+uwsgi_path = os.path.join(config('PROJECT_PATH'), f'{project_name}_uwsgi.ini')
 
 #generate uwsgi configuration based on production config
-uwsgi_config = replace_config(uwsgi_config, 'HOST_WITH_PROTOCOL', f'{production_config.get("PROTOCOL")}://{production_config.get("HOST")}')
+uwsgi_config = replace_config(uwsgi_config, 'HOST_WITH_PROTOCOL', f'{config("PROTOCOL")}://{config("HOST")}')
 uwsgi_config = replace_config(uwsgi_config, 'VIRTUALENV_PATH')
 uwsgi_config = replace_config(uwsgi_config, 'PROJECT_PATH')
-uwsgi_config = replace_config(uwsgi_config, 'PY_WSGI_FILE', os.path.join(production_config.get("PROJECT_PATH"), production_config.get("PROJECT_MAIN_APP"), 'wsgi.py'))
-uwsgi_config = replace_config(uwsgi_config, 'PROJECT_SETTINGS', os.path.join(production_config.get("PROJECT_PATH"), production_config.get("PROJECT_MAIN_APP"), 'settings.py'))
+uwsgi_config = replace_config(uwsgi_config, 'PY_WSGI_FILE', os.path.join(config("PROJECT_PATH"), config("PROJECT_MAIN_APP"), 'wsgi.py'))
+uwsgi_config = replace_config(uwsgi_config, 'PROJECT_SETTINGS', os.path.join(config("PROJECT_PATH"), config("PROJECT_MAIN_APP"), 'settings.py'))
 
 #generate nginx configuration based on production config
 nginx_config = replace_config(nginx_config, 'HOST')
-nginx_config = replace_config(nginx_config, f'www.{production_config.get("HOST")}')
+nginx_config = replace_config(nginx_config, 'HOST_WITH_PROTOCOL', f'www.{config("HOST")}')
 nginx_config = replace_config(nginx_config, 'UWSGI_SOCKET', uwsgi_socket)
 
 with open(os.path.join('/etc/nginx/sites-available', f'{project_name}.conf'), 'w+') as nginx_config_file:
